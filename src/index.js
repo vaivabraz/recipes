@@ -5,6 +5,7 @@ import App from "./components/App";
 import "./index.css";
 import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
+import { getRecipes } from "./redux/actions/recipesActions";
 
 const store = configureStore();
 render(
@@ -16,4 +17,4 @@ render(
   document.getElementById("app")
 );
 
-//store.dispatche(getCurretUserInfo(<userCredentials>))
+store.dispatch(getRecipes());
