@@ -6,3 +6,9 @@ export function getRecipes() {
     .then(handleResponse)
     .catch(handleError);
 }
+
+export function getRecipeBySlug(slug) {
+  return fetch(baseUrl + "/" + slug)
+    .then(handleResponse)
+    .catch(handleError);
+}

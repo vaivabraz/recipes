@@ -1,10 +1,28 @@
 import * as types from "../actions/actionTypes";
-import initialState from "./initialState";
+import { Record, List } from "immutable";
 
-export default function recipesReducer(state = initialState.recipes, action) {
+const initialState = Record({
+  recipes: List(),
+  currentRecipe: null
+});
+
+const Recipe = Record({
+  id: 0,
+  title: "",
+  summary: "",
+  image: "",
+  slug: ""
+});
+
+function setRecipes(state, recipes) {
+  const recipesList = List(recipes.map(r => new Recipe(r)));
+  return state.set("recipes", recipesList);
+}
+
+export default function recipesReducer(state = new initialState(), action) {
   switch (action.type) {
     case types.SET_RECIPES:
-      return action.recipes;
+      return setRecipes(state, action.recipes);
     default:
       return state;
   }

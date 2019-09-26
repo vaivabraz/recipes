@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function ProfilePage(props) {
   return (
-    <div>
+    <div className="pageContainer">
       <h1>PROFILE PAGE</h1>
       <h2>hello, {props.name}</h2>
     </div>
