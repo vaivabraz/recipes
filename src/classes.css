@@ -3,9 +3,15 @@
   border-radius: 3px;
 }
 
-.pageContainer {
+.pageFlexContainer {
   display: flex;
   flex-wrap: wrap;
   min-height: 700px;
   padding: 24px;
+}
+
+.pageContainer {
+  margin: 40px 100px;
+  padding: 24px;
+  background-color: #f4f4f4;
 }

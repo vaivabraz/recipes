@@ -8,7 +8,7 @@ import "./recipesStyles.css";
 
 function RecipesListPage(props) {
   return (
-    <div className="pageContainer">
+    <div className="pageFlexContainer">
       <div style={styles.mainContainer}>
         <div
           style={{
