@@ -1,6 +1,5 @@
 .border {
-  border: 1px grey solid;
-  border-radius: 3px;
+  border: 1px #dbdbdb solid;
 }
 
 .pageFlexContainer {
@@ -8,10 +7,11 @@
   flex-wrap: wrap;
   min-height: 700px;
   padding: 24px;
+  margin: 40px 100px;
+  flex-direction: column;
 }
 
 .pageContainer {
   margin: 40px 100px;
   padding: 24px;
-  background-color: #f4f4f4;
 }
