@@ -4,34 +4,26 @@ import { connect } from "react-redux";
 import { Button } from "../common";
 import { getRecipes } from "../../redux/selectors/recipesSelectors";
 import { RecipeCard } from ".";
-import "./recipesStyles.css";
+import "./css/recipesListPage.css";
 
 function RecipesListPage(props) {
   return (
-    <div className="pageFlexContainer">
-      <div style={styles.mainContainer}>
-        <div
-          style={{
-            display: "flex",
-            direction: "row",
-            alignItems: "center",
-            justifyContent: "space-between"
-          }}
-        >
+    <div className="pageFlexContainer flexRow">
+      <div className="recipesListPageMainContainer">
+        <div className="recipesListPageHeader">
           <h1>Receptai </h1>
           <Button
-            style={{ marginRight: 12 }}
             action={() => console.log("oaoaoaoa")}
             text="Prideti nauja recepta"
           />
         </div>
-        <div style={styles.listContainer}>
+        <div className="recipesListPageList">
           {props.recipes.map(recipe => (
             <RecipeCard key={recipe.get("id")} recipe={recipe} />
           ))}
         </div>
       </div>
-      <div style={styles.sideContainer}>
+      <div className="recipesListPageSideContainer">
         <h3 style={{ paddingBottom: "6px" }}>Kategorijos:</h3>
         <ul>
           <li>
@@ -68,17 +60,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(RecipesListPage);
-
-const styles = {
-  mainContainer: {
-    flex: 5
-  },
-  sideContainer: {
-    flex: 1,
-    padding: "120px 10px"
-  },
-  listContainer: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(210px, auto))"
-  }
-};
