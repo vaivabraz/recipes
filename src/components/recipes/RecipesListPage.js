@@ -8,7 +8,7 @@ import "./css/recipesListPage.css";
 
 function RecipesListPage(props) {
   return (
-    <div className="pageFlexContainer flexRow">
+    <div className="pageFlexContainer flexColumnSmallScreen">
       <div className="recipesListPageMainContainer">
         <div className="recipesListPageHeader">
           <h1>Receptai </h1>

@@ -8,10 +8,24 @@
   min-height: 700px;
   padding: 24px;
   margin: 40px 100px;
+}
+
+.flexColumn {
   flex-direction: column;
 }
 
 .pageContainer {
   margin: 40px 100px;
   padding: 24px;
+}
+
+.animationTransition {
+  -webkit-transition-duration: 0.3s; /* Safari */
+  transition-duration: 0.3s;
+}
+
+@media screen and (max-width: 1000px) {
+  .flexColumnSmallScreen {
+    flex-direction: column;
+  }
 }

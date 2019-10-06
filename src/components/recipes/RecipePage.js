@@ -17,7 +17,8 @@ function RecipePage(props) {
     preparation: "",
     image: "",
     categories: [],
-    notes: ""
+    notes: "",
+    summary: ""
   });
 
   useEffect(() => {
@@ -82,7 +83,7 @@ function RecipePage(props) {
   return (
     <div className="pageFlexContainer border">
       <h1 className="title alignCenter">{recipe.title}</h1>
-      <div className="recipeBody flexColumn">
+      <div className="recipeBody flexColumnSmallScreen">
         <div className="leftColumn alignCenter">
           <img
             className="image border"
