@@ -3,26 +3,23 @@ import PropTypes from "prop-types";
 import "./css/textInput.css";
 
 function TextInput(props) {
+  const { label, multiline, inline, ...inputProps } = props;
   const className =
-    (props.inline ? "textInputFieldSmall" : "textInputField ") +
+    (inline ? "textInputFieldSmall" : "textInputField ") +
     " inputTextStyling border";
 
   return (
-    <div
-      className={
-        props.inline ? "textInputInlineContainer" : "textInputContainer"
-      }
-    >
-      <label className="textInputLabel">{props.label}</label>
+    <div className={inline ? "textInputInlineContainer" : "textInputContainer"}>
+      <label className="textInputLabel">{label}</label>
 
-      {props.multiline ? (
+      {multiline ? (
         <textarea
           className="textInputField inputTextStyling border"
           rows="10"
-          {...props}
+          {...inputProps}
         />
       ) : (
-        <input autoComplete="off" className={className} {...props} />
+        <input autoComplete="off" className={className} {...inputProps} />
       )}
     </div>
   );

@@ -18,7 +18,7 @@ function IngredientLine(props) {
       <input
         className="ingredientProductInput"
         autoComplete="off"
-        placeHolder="Produktas"
+        placeholder="Produktas"
         value={entry.product}
         onChange={onInputChange}
         name={"product"}
@@ -26,7 +26,7 @@ function IngredientLine(props) {
       <input
         className="ingredientQuantityInput"
         autoComplete="off"
-        placeHolder="Kiekis"
+        placeholder="Kiekis"
         value={entry.quantity}
         onChange={onInputChange}
         name={"quantity"}
