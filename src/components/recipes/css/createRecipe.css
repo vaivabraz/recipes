@@ -1,0 +1,40 @@
+.createRecipeMainContainer {
+  display: flex;
+}
+
+.createRecipeLeftContainer {
+  flex: 5;
+  flex-direction: column;
+}
+
+.createRecipeRightContainer {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.addNewIngredient {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  color: #b3acac;
+}
+
+.uploadImageContainer {
+  background-color: rgb(219, 209, 193);
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 300px;
+
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.recipeSubmitButtonContainer {
+  padding: 40px 20px;
+  display: flex;
+}

@@ -1,0 +1,20 @@
+.ingredientLineBody {
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+}
+
+.ingredientProductInput {
+  padding: 5px;
+  flex: 1;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+}
+
+.ingredientQuantityInput {
+  padding: 5px;
+  margin-left: 5px;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  width: 100px;
+}

@@ -3,6 +3,7 @@
   transition-duration: 0.3s;
 
   min-width: 120px;
+  max-width: 300px;
   padding: 0px 12px;
   display: flex;
   align-items: center;

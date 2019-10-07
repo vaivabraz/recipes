@@ -24,6 +24,22 @@
   transition-duration: 0.3s;
 }
 
+.circleButton {
+  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
+  font-size: 26;
+  color: #b3acac;
+  width: 30px;
+  height: 30px;
+  border: 1px #dbdbdb solid;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.inputTextStyling {
+  font-size: 16px;
+  letter-spacing: 0.15em;
+}
+
 @media screen and (max-width: 1000px) {
   .flexColumnSmallScreen {
     flex-direction: column;

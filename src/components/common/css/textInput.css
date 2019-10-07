@@ -1,0 +1,32 @@
+.textInputContainer {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.textInputInlineContainer {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.textInputLabel {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  padding: 20px 0px 10px 0px;
+}
+
+.textInputField {
+  padding: 5px;
+  flex: 1;
+  resize: none;
+}
+
+.textInputFieldSmall {
+  padding: 5px;
+  height: 40px;
+  width: 100px;
+  margin: 5px 0px 5px 10px;
+}
