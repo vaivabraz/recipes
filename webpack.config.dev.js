@@ -20,7 +20,8 @@ module.exports = {
     historyApiFallback: true,
     disableHostCheck: true,
     headers: { "Access-Control-Allow-Origin": "*" },
-    https: false
+    https: false,
+    port: process.env.PORT || 9000
   },
   plugins: [
     new webpack.DefinePlugin({
