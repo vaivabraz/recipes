@@ -15,6 +15,7 @@ function RecipesListPage(props) {
           <Button
             action={() => console.log("oaoaoaoa")}
             text="Prideti nauja recepta"
+            navigateTo="/createRecipe"
           />
         </div>
         <div className="recipesListPageList">

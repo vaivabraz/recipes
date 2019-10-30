@@ -6,7 +6,8 @@ import "./css/recipeCard.css";
 function RecipeCard(props) {
   const { recipe } = props;
   const imageName = recipe.get("image");
-  const image = require("../../images/" + imageName);
+  const image = require("../../images/" + "vistiena.jpg");
+  // const image = require("../../images/" + imageName);
   const title = recipe.get("title");
   return (
     <Link

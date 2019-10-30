@@ -7,14 +7,24 @@ const Header = () => {
 
   return (
     <nav style={styles.container}>
-      <NavLink to="/" activeStyle={activeStyle} exact style={styles.navLink}>
+      <NavLink
+        className="border"
+        to="/"
+        activeStyle={activeStyle}
+        exact
+        style={styles.navLink}
+      >
         <h5>RECEPTAI</h5>
       </NavLink>
 
       <NavLink to="/profile" activeStyle={activeStyle} style={styles.navLink}>
         <h5>Vaiva</h5>
       </NavLink>
-      <NavLink to="/profile" activeStyle={activeStyle} style={styles.navLink}>
+      <NavLink
+        to="/createRecipe"
+        activeStyle={activeStyle}
+        style={styles.navLink}
+      >
         <h5>Atsijungti</h5>
       </NavLink>
     </nav>
@@ -31,7 +41,7 @@ const styles = {
     borderTop: "10px #4d1515 solid"
   },
   navLink: {
-    paddingRight: 20,
+    padding: "3px 10px",
     fontSize: "16px",
     color: "#281708"
   }

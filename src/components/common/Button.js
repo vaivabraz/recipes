@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./css/button.css";
+import { NavLink } from "react-router-dom";
 
 function Button(props) {
   let styles =
@@ -9,9 +10,16 @@ function Button(props) {
     styles = styles + " " + props.className;
   }
   return (
-    <button style={props.style} className={styles} onMouseDown={props.action}>
+    // <button
+    //   className={styles}
+    //   onMouseDown={props.action}
+    //   onClick={"location.href=" + props.navigateTo}
+    // >
+    //   {props.text}
+    // </button>
+    <NavLink to={props.navigateTo} className={styles}>
       {props.text}
-    </button>
+    </NavLink>
   );
 }
 
@@ -20,7 +28,8 @@ Button.propTypes = {
   action: PropTypes.func,
   style: PropTypes.object,
   size: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  navigateTo: PropTypes.string
 };
 
 export default Button;
