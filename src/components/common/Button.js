@@ -4,6 +4,7 @@ import "./css/button.css";
 import { NavLink } from "react-router-dom";
 
 function Button(props) {
+  //
   let styles =
     props.size === "small" ? "button border small" : "button border big";
   if (props.className) {
