@@ -46,7 +46,7 @@ function CreateRecipe() {
   };
 
   const handleAddIngredient = () => {
-    event.preventDefault();
+    // event.preventDefault();
     let newArr = recipe.ingredients;
 
     const maxId =
