@@ -3,7 +3,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 process.env.NODE_ENV = "development";
-
+const port = process.env.PORT || 3001;
 module.exports = {
   mode: "development",
   target: "web",
@@ -21,7 +21,7 @@ module.exports = {
     disableHostCheck: true,
     headers: { "Access-Control-Allow-Origin": "*" },
     https: false,
-    port: process.env.PORT || 9000
+    port: port
   },
   plugins: [
     new webpack.DefinePlugin({
