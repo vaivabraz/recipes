@@ -3,7 +3,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 process.env.NODE_ENV = "development";
-const port = process.env.PORT || 3001;
 module.exports = {
   mode: "development",
   target: "web",
@@ -20,13 +19,9 @@ module.exports = {
     historyApiFallback: true,
     disableHostCheck: true,
     headers: { "Access-Control-Allow-Origin": "*" },
-    https: false,
-    port: port
+    https: false
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://localhost:3001")
-    }),
     new HtmlWebpackPlugin({
       template: "public/index.html",
       favicon: "public/favicon.ico"
