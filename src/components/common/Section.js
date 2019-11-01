@@ -1,14 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./css/section.css";
+import styled from "styled-components";
+
+const Paragraph = styled.div`
+  padding-bottom: 20px;
+`;
+
+const Title = styled.h3`
+  padding-bottom: 5px;
+`;
 
 function Section(props) {
   return (
-    <div className="paragraph" style={props.style}>
-      <h3> {props.title}</h3>
+    <Paragraph style={props.style}>
+      <Title>{props.title}</Title>
       <p>{props.text}</p>
       {props.children}
-    </div>
+    </Paragraph>
   );
 }
 

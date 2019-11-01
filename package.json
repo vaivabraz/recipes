@@ -21,7 +21,8 @@
     "react-toastify": "4.5.2",
     "redux": "4.0.1",
     "redux-saga": "^1.0.5",
-    "reselect": "4.0.0"
+    "reselect": "4.0.0",
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "file-loader": "^4.2.0",
