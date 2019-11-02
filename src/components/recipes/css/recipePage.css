@@ -1,34 +1,3 @@
-.recipeBody {
-  display: flex;
-  margin: 0 40px 0 40px;
-  flex-wrap: wrap;
-}
-
-.title {
-  padding: 40px;
-  align-self: center;
-}
-
-.leftColumn {
-  flex: 3;
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-
-.rightColumn {
-  flex: 5;
-  padding-left: 30px;
-  flex-wrap: wrap;
-}
-
-.image {
-  max-width: 100%;
-  min-width: 250px;
-  margin-bottom: 10px;
-}
-
 .info {
   display: flex;
   flex-direction: column;

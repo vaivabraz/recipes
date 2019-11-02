@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TextInput, Button } from "../common";
+import { TextInput, Button } from "../../common";
 import IngredientLine from "./IngredientLine";
 import styled from "styled-components";
 

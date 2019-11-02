@@ -3,6 +3,38 @@ import PropTypes from "prop-types";
 import { Section, Button } from "../common";
 import "./css/recipePage.css";
 // import { getRecipeBySlug } from "../../api/recipesApi";
+import styled from "styled-components";
+
+const Body = styled.div`
+  display: flex;
+  margin: 0 40px 0 40px;
+  flex-wrap: wrap;
+`;
+
+const LeftColumn = styled.div`
+  flex: 3;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
+
+const RightColumn = styled.div`
+  flex: 5;
+  padding-left: 30px;
+  flex-wrap: wrap;
+`;
+
+const Title = styled.h1`
+  padding: 40px;
+  align-self: center;
+`;
+
+const Image = styled.img`
+  max-width: 100%;
+  min-width: 250px;
+  margin-bottom: 10px;
+`;
 
 function RecipePage(props) {
   const [recipe, setRecipe] = useState({
@@ -82,11 +114,11 @@ function RecipePage(props) {
 
   return (
     <div className="pageFlexContainer border">
-      <h1 className="title alignCenter">{recipe.title}</h1>
-      <div className="recipeBody flexColumnSmallScreen">
-        <div className="leftColumn alignCenter">
-          <img
-            className="image border"
+      <Title className="alignCenter">{recipe.title}</Title>
+      <Body className="flexColumnSmallScreen">
+        <LeftColumn className="alignCenter">
+          <Image
+            className="border"
             src={image}
             title={recipe.title}
             alt={recipe.title}
@@ -95,8 +127,8 @@ function RecipePage(props) {
             {recipe.portions && <h4>Porciju skaicius: {recipe.portions}</h4>}
             {recipe.time && <h4>Uztruks laiko: {recipe.time}</h4>}
           </div>
-        </div>
-        <div className="rightColumn">
+        </LeftColumn>
+        <RightColumn>
           <Section title="Produktai: ">{productsList}</Section>
           <Section title="Paruosimas: " text={recipe.preparation} />
           {recipe.notes && <Section title="Pastabos: " text={recipe.notes} />}
@@ -122,8 +154,8 @@ function RecipePage(props) {
               />
             </div>
           </div>
-        </div>
-      </div>
+        </RightColumn>
+      </Body>
     </div>
   );
 }

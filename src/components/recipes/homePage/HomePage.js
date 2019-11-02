@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Button } from "../common";
-import { getRecipes } from "../../redux/selectors/recipesSelectors";
+import { Button } from "../../common";
+import { getRecipes } from "../../../redux/selectors/recipesSelectors";
 import { RecipesList, CategoriesList } from ".";
 import styled from "styled-components";
 
