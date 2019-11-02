@@ -3,16 +3,16 @@ import { Route, Switch } from "react-router-dom";
 import { Header, Footer } from "./common";
 import PageNotFound from "./PageNotFound";
 import ProfilePage from "./profile/ProfilePage";
-import { RecipesListPage, RecipePage, CreateRecipe } from "./recipes";
+import { HomePage, RecipePage, CreateRecipe } from "./recipes";
 
 function App() {
   return (
     <div>
       <Header />
       <Switch>
-        <Route exact path="/" component={RecipesListPage} />
+        <Route exact path="/" component={HomePage} />
         <Route path="/recipes/:slug" component={RecipePage} />
-        <Route path="/recipes" component={RecipesListPage} />
+        <Route path="/recipes" component={HomePage} />
         <Route path="/createRecipe" component={CreateRecipe} />
         <Route path="/profile" component={ProfilePage} />
         <Route component={PageNotFound} />
