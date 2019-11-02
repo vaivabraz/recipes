@@ -1,12 +1,38 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./css/button.css";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+const ButtonBox = styled.div`
+  -webkit-transition-duration: 0.3s; /* Safari */
+  transition-duration: 0.3s;
+  min-width: 120px;
+  max-width: 300px;
+  padding: 0px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  height: 38px;
+  ${({ size }) =>
+    size === "small" &&
+    `
+    font-size: 16px;
+    height: 30px;
+`}
+  &:hover {
+    background-color: palevioletred;
+    color: white;
+  }
+
+  &:active {
+    background-color: red;
+    color: white;
+  }
+`;
 
 function Button(props) {
-  //
-  let styles =
-    props.size === "small" ? "button border small" : "button border big";
+  let styles = "button border";
   if (props.className) {
     styles = styles + " " + props.className;
   }
@@ -18,8 +44,10 @@ function Button(props) {
     // >
     //   {props.text}
     // </button>
-    <NavLink to={props.navigateTo} className={styles}>
-      {props.text}
+    <NavLink to={props.navigateTo}>
+      <ButtonBox size={props.size} className={styles}>
+        {props.text}
+      </ButtonBox>
     </NavLink>
   );
 }
