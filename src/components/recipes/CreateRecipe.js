@@ -1,7 +1,48 @@
 import React, { useState } from "react";
 import { TextInput, Button } from "../common";
 import IngredientLine from "./IngredientLine";
-import "./css/createRecipe.css";
+import styled from "styled-components";
+
+const MainContainer = styled.div`
+  display: flex;
+`;
+
+const LeftContainer = styled.div`
+  flex: 5;
+  flex-direction: column;
+`;
+
+const RightContainer = styled.div`
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+`;
+
+const AddNewIngredientLine = styled.div`
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  color: #b3acac;
+`;
+
+const ImageContainer = styled.div`
+  background-color: rgb(219, 209, 193);
+  margin-top: 110px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 300px;
+
+  justify-content: center;
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonBox = styled.div`
+  padding: 40px 20px;
+  display: flex;
+`;
 
 function CreateRecipe() {
   const [recipe, setRecipe] = useState({
@@ -45,8 +86,8 @@ function CreateRecipe() {
     });
   };
 
-  const handleAddIngredient = () => {
-    // event.preventDefault();
+  const handleAddIngredient = event => {
+    event.preventDefault();
     let newArr = recipe.ingredients;
 
     const maxId =
@@ -78,8 +119,8 @@ function CreateRecipe() {
 
   return (
     <form className="pageFlexContainer flexColumn border">
-      <div className="createRecipeMainContainer flexColumnSmallScreen">
-        <div className="createRecipeLeftContainer ">
+      <MainContainer className="flexColumnSmallScreen">
+        <LeftContainer>
           <h1>Sukurti recepta</h1>
           <TextInput
             label="pavadinimas"
@@ -89,12 +130,12 @@ function CreateRecipe() {
           />
           <p className="textInputLabel">ingredientai</p>
           {ingredientsList}
-          <div className="addNewIngredient">
+          <AddNewIngredientLine className="addNewIngredient">
             <button className="circleButton" onClick={handleAddIngredient}>
               +
             </button>
             <h4>Prideti nauja produkta</h4>
-          </div>
+          </AddNewIngredientLine>
           <TextInput label="paruosimas" multiline />
           <TextInput
             label="pastabos"
@@ -106,16 +147,16 @@ function CreateRecipe() {
           <TextInput label="kiek laiko uztruks" inline />
           <TextInput label="porciju skaicius" inline type="number" />
           <TextInput label="KATEGORIJOS" multiline />
-        </div>
-        <div className="createRecipeRightContainer">
-          <div className="uploadImageContainer">
+        </LeftContainer>
+        <RightContainer>
+          <ImageContainer>
             <h2>IMG</h2>
-          </div>
-        </div>
-      </div>
-      <div className="recipeSubmitButtonContainer">
+          </ImageContainer>
+        </RightContainer>
+      </MainContainer>
+      <ButtonBox>
         <Button text="SUKURTI" action={() => console.log(recipe)}></Button>
-      </div>
+      </ButtonBox>
     </form>
   );
 }

@@ -1,6 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./css/IngredientLine.css";
+import styled from "styled-components";
+
+const Line = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+`;
+
+const ProductInput = styled.input`
+  padding: 5px;
+  flex: 1;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+`;
+
+const QuantityInput = styled.input`
+  padding: 5px;
+  margin-left: 5px;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  width: 100px;
+`;
 
 function IngredientLine(props) {
   const entry = props.entry;
@@ -14,17 +35,15 @@ function IngredientLine(props) {
   };
 
   return (
-    <div className="ingredientLineBody">
-      <input
-        className="ingredientProductInput"
+    <Line>
+      <ProductInput
         autoComplete="off"
         placeholder="Produktas"
         value={entry.product}
         onChange={onInputChange}
         name={"product"}
       />
-      <input
-        className="ingredientQuantityInput"
+      <QuantityInput
         autoComplete="off"
         placeholder="Kiekis"
         value={entry.quantity}
@@ -34,7 +53,7 @@ function IngredientLine(props) {
       <button className="circleButton" onClick={onRemoveProduct}>
         X
       </button>
-    </div>
+    </Line>
   );
 }
 
