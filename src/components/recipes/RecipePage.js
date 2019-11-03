@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Section, Button } from "../common";
-import "./css/recipePage.css";
 // import { getRecipeBySlug } from "../../api/recipesApi";
 import styled from "styled-components";
 
@@ -34,6 +33,41 @@ const Image = styled.img`
   max-width: 100%;
   min-width: 250px;
   margin-bottom: 10px;
+`;
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 10px 0;
+  h4 {
+    padding: 3px 0px;
+    color: rgb(141, 141, 126);
+  }
+`;
+
+const BottomContainer = styled.div`
+  padding-top: 40px;
+`;
+
+const Author = styled.div`
+  h5 {
+    padding-left: 5px;
+    display: inline-block;
+  }
+  p {
+    display: inline-block;
+  }
+`;
+
+const ButtonsBox = styled.div`
+  display: flex;
+  padding-top: 8px;
+  width: ;
+`;
+
+const Separator = styled.div`
+  margin-right: 10px;
 `;
 
 function RecipePage(props) {
@@ -123,37 +157,37 @@ function RecipePage(props) {
             title={recipe.title}
             alt={recipe.title}
           />
-          <div className="info">
+          <Info>
             {recipe.portions && <h4>Porciju skaicius: {recipe.portions}</h4>}
             {recipe.time && <h4>Uztruks laiko: {recipe.time}</h4>}
-          </div>
+          </Info>
         </LeftColumn>
         <RightColumn>
           <Section title="Produktai: ">{productsList}</Section>
           <Section title="Paruosimas: " text={recipe.preparation} />
           {recipe.notes && <Section title="Pastabos: " text={recipe.notes} />}
           <Section title="Kategorijos: ">{categories}</Section>
-          <div className="authorEdit">
-            <div className="author">
+          <BottomContainer>
+            <Author>
               <p>{"Autorius: "}</p>
               <a href="">
                 <h5>{recipe.author}</h5>
               </a>
-            </div>
-            <div className="buttons">
+            </Author>
+            <ButtonsBox>
               <Button
-                className="separateButtons"
                 size="small"
                 action={() => console.log("oaoaoaoa")}
                 text="Redaguoti"
               />
+              <Separator />
               <Button
                 size="small"
                 action={() => console.log("oaoaoaoa")}
                 text="Istrinti"
               />
-            </div>
-          </div>
+            </ButtonsBox>
+          </BottomContainer>
         </RightColumn>
       </Body>
     </div>

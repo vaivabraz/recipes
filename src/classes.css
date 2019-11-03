@@ -50,4 +50,7 @@
   .flexColumnSmallScreen {
     flex-direction: column;
   }
+  .alignCenter {
+    align-items: center;
+  }
 }
