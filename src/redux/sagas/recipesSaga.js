@@ -9,6 +9,11 @@ export default function* saga() {
 }
 
 export function* getRecipes() {
-  const response = yield call(callGetRecipes);
-  yield put(recipesActions.setRecipes(response));
+  try {
+    const response = yield call(callGetRecipes);
+    yield put(recipesActions.setRecipes(response));
+  } catch (e) {
+    console.log("response: ", e);
+    yield put(recipesActions.setError("Nepavyko parsiusti receptu"));
+  }
 }

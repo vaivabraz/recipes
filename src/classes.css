@@ -2,6 +2,11 @@
   border: 1px #dbdbdb solid;
 }
 
+.error {
+  background-color: rgb(175, 91, 91);
+  padding: 6px;
+}
+
 .textInputLabel {
   font-family: "Courier New", Courier, monospace;
   font-size: 20px;

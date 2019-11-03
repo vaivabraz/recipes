@@ -12,3 +12,10 @@ export function setRecipes(recipes) {
     recipes
   };
 }
+
+export function setError(error) {
+  return {
+    type: types.SET_ERROR,
+    error
+  };
+}

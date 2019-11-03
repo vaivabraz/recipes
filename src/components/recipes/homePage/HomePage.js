@@ -2,7 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Button } from "../../common";
-import { getRecipes } from "../../../redux/selectors/recipesSelectors";
+import {
+  getRecipes,
+  getError
+} from "../../../redux/selectors/recipesSelectors";
 import { RecipesList, CategoriesList } from ".";
 import styled from "styled-components";
 
@@ -22,6 +25,11 @@ function HomePage(props) {
   return (
     <div className="pageFlexContainer flexColumnSmallScreen">
       <MainContainer>
+        {props.error && (
+          <div className="error">
+            <h3>{props.error}</h3>
+          </div>
+        )}
         <Header>
           <h1>Receptai </h1>
           <Button text="Prideti nauja recepta" navigateTo="/createRecipe" />
@@ -34,13 +42,15 @@ function HomePage(props) {
 }
 
 HomePage.propTypes = {
-  recipes: PropTypes.object
+  recipes: PropTypes.object,
+  error: PropTypes.string
 };
 
 function mapStateToProps(state) {
   return {
     recipes: getRecipes(state),
-    categories: []
+    categories: [],
+    error: getError(state)
   };
 }
 
