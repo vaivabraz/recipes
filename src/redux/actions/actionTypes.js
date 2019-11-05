@@ -3,4 +3,5 @@ export const SET_RECIPES = "SET_RECIPES";
 export const POST_RECIPE = "POST_RECIPE";
 export const SET_ERROR = "SET_ERROR";
 
+export const NAVIGATE_TO_HOME_PAGE = "NAVIGATE_TO_HOME_PAGE";
 export const NAVIGATE_TO_RECIPE_FORM = "NAVIGATE_TO_RECIPE_FORM";

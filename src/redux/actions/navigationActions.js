@@ -6,3 +6,9 @@ export function navigateToRecipeForm(recipe = {}) {
     recipe
   };
 }
+
+export function navigateToHomePage() {
+  return {
+    type: types.NAVIGATE_TO_HOME_PAGE
+  };
+}
