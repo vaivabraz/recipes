@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-const ButtonBox = styled.div`
+const ButtonBox = styled.button`
   -webkit-transition-duration: 0.3s; /* Safari */
   transition-duration: 0.3s;
   min-width: 120px;
@@ -32,23 +31,22 @@ const ButtonBox = styled.div`
 `;
 
 function Button(props) {
+  const handleOnClick = () => {
+    props.action();
+  };
   let styles = "button border";
   if (props.className) {
     styles = styles + " " + props.className;
   }
   return (
-    // <button
-    //   className={styles}
-    //   onMouseDown={props.action}
-    //   onClick={"location.href=" + props.navigateTo}
-    // >
-    //   {props.text}
-    // </button>
-    <NavLink to={props.navigateTo}>
-      <ButtonBox size={props.size} className={styles}>
-        {props.text}
-      </ButtonBox>
-    </NavLink>
+    <ButtonBox
+      type="button"
+      size={props.size}
+      className={styles}
+      onClick={handleOnClick}
+    >
+      {props.text}
+    </ButtonBox>
   );
 }
 

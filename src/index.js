@@ -1,19 +1,19 @@
 import React from "react";
 import { render } from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 import App from "./components/App";
 import "./index.css";
 import "./classes.css";
-import configureStore from "./redux/configureStore";
+import configureStore, { history } from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 import { getRecipes } from "./redux/actions/recipesActions";
 
 const store = configureStore();
 render(
   <ReduxProvider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </ReduxProvider>,
   document.getElementById("app")
 );

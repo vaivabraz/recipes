@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { TextInput, Button } from "../../common";
 import IngredientLine from "./IngredientLine";
 import styled from "styled-components";
+import { postRecipe } from "../../../redux/actions/recipesActions";
+import { connect } from "react-redux";
 
 const MainContainer = styled.div`
   display: flex;
@@ -44,7 +46,7 @@ const ButtonBox = styled.div`
   display: flex;
 `;
 
-function CreateRecipe() {
+function CreateRecipe(props) {
   const [recipe, setRecipe] = useState({
     title: "",
     notes: "",
@@ -108,6 +110,10 @@ function CreateRecipe() {
     });
   };
 
+  const handleSubmit = () => {
+    props.postRecipe(recipe);
+  };
+
   const ingredientsList = recipe.ingredients.map(r => (
     <IngredientLine
       key={r.id}
@@ -136,7 +142,13 @@ function CreateRecipe() {
             </button>
             <h4>Prideti nauja produkta</h4>
           </AddNewIngredientLine>
-          <TextInput label="paruosimas" multiline />
+          <TextInput
+            label="paruosimas"
+            name="preparation"
+            multiline
+            value={recipe.preparation}
+            onChange={handleChange}
+          />
           <TextInput
             label="pastabos"
             name="notes"
@@ -155,10 +167,17 @@ function CreateRecipe() {
         </RightContainer>
       </MainContainer>
       <ButtonBox>
-        <Button text="SUKURTI" action={() => console.log(recipe)}></Button>
+        <Button text="SUKURTI" action={handleSubmit}></Button>
       </ButtonBox>
     </form>
   );
 }
 
-export default CreateRecipe;
+const mapDispatchToProps = {
+  postRecipe
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CreateRecipe);

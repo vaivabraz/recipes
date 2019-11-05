@@ -13,6 +13,13 @@ export function setRecipes(recipes) {
   };
 }
 
+export function postRecipe(recipe) {
+  return {
+    type: types.POST_RECIPE,
+    recipe
+  };
+}
+
 export function setError(error) {
   return {
     type: types.SET_ERROR,

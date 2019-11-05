@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router";
 import { Header, Footer } from "./common";
 import PageNotFound from "./PageNotFound";
 import ProfilePage from "./profile/ProfilePage";

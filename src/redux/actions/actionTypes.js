@@ -1,3 +1,6 @@
 export const GET_RECIPES = "GET_RECIPES";
 export const SET_RECIPES = "SET_RECIPES";
+export const POST_RECIPE = "POST_RECIPE";
 export const SET_ERROR = "SET_ERROR";
+
+export const NAVIGATE_TO_RECIPE_FORM = "NAVIGATE_TO_RECIPE_FORM";

@@ -6,6 +6,8 @@ import {
   getRecipes,
   getError
 } from "../../../redux/selectors/recipesSelectors";
+
+import { navigateToRecipeForm } from "../../../redux/actions/navigationActions";
 import { RecipesList, CategoriesList } from ".";
 import styled from "styled-components";
 
@@ -32,7 +34,11 @@ function HomePage(props) {
         )}
         <Header>
           <h1>Receptai </h1>
-          <Button text="Prideti nauja recepta" navigateTo="/createRecipe" />
+          <Button
+            text="Prideti nauja recepta"
+            navigateTo="/createRecipe"
+            action={props.navigateToRecipeForm}
+          />
         </Header>
         <RecipesList recipes={props.recipes} />
       </MainContainer>
@@ -54,7 +60,9 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  navigateToRecipeForm
+};
 
 export default connect(
   mapStateToProps,
