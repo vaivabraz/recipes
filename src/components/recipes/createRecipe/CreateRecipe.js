@@ -47,14 +47,30 @@ const ButtonBox = styled.div`
 `;
 
 function CreateRecipe(props) {
+  const currentRecipe = props.location.state.recipe;
   const [recipe, setRecipe] = useState({
-    title: "",
-    notes: "",
+    id: currentRecipe._id || null,
+    title: currentRecipe.title || "",
+    preparation: currentRecipe.preparation || "",
+    notes: currentRecipe.notes || "",
+    summary: currentRecipe.summary || "",
+    image: currentRecipe.image || "",
+    time: currentRecipe.time || "",
+    portions: currentRecipe.portions || null,
+    categories: currentRecipe.categories || "",
     ingredients: [
       { product: "", quantity: "", id: 0 },
       { product: "", quantity: "", id: 1 },
       { product: "", quantity: "", id: 2 }
     ]
+
+    // categories: [
+    //       "vakariene",
+    //       "greitai"
+    //     ],
+    //   author: "",
+    //   date: "",
+    //   slug: props.match.params.slug,
   });
 
   const handleChange = ({ target }) => {
@@ -155,10 +171,34 @@ function CreateRecipe(props) {
             value={recipe.notes}
             onChange={handleChange}
           />
-          <TextInput label="trumpai apie recepta" />
-          <TextInput label="kiek laiko uztruks" inline />
-          <TextInput label="porciju skaicius" inline type="number" />
-          <TextInput label="KATEGORIJOS" multiline />
+          <TextInput
+            label="trumpai apie recepta"
+            name="summary"
+            value={recipe.summary}
+            onChange={handleChange}
+          />
+          <TextInput
+            label="kiek laiko uztruks"
+            inline
+            name="time"
+            value={recipe.time}
+            onChange={handleChange}
+          />
+          <TextInput
+            label="porciju skaicius"
+            inline
+            type="number"
+            name="portions"
+            value={recipe.portions}
+            onChange={handleChange}
+          />
+          <TextInput
+            label="KATEGORIJOS"
+            multiline
+            name="categories"
+            value={recipe.categories}
+            onChange={handleChange}
+          />
         </LeftContainer>
         <RightContainer>
           <ImageContainer>

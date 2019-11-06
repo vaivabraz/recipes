@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import styled from "styled-components";
+import { navigateToRecipePage } from "../../../redux/actions/navigationActions";
 
-const Card = styled.div`
+const Card = styled.button`
   color: #281708;
   background-color: #f4f4f4;
 
@@ -37,19 +38,20 @@ const Title = styled.h3`
 
 function RecipeCard(props) {
   const { recipe } = props;
-  const imageName = recipe.get("image");
+
   const image = require("../../../images/" + "vistiena.jpg");
   // const image = require("../../../images/" + imageName);
-  const title = recipe.get("title");
+  const title = recipe.title;
+  const handleOnClick = () => {
+    props.navigateToRecipePage(recipe);
+  };
   return (
-    <Link to={"/recipes/" + recipe.get("slug")}>
-      <Card className="border animationTransition">
-        <Image className="border" src={image} title={title} alt={title} />
-        <TitleContainer>
-          <Title>{title}</Title>
-        </TitleContainer>
-      </Card>
-    </Link>
+    <Card className="border animationTransition" onClick={handleOnClick}>
+      <Image className="border" src={image} title={title} alt={title} />
+      <TitleContainer>
+        <Title>{title}</Title>
+      </TitleContainer>
+    </Card>
   );
 }
 
@@ -57,4 +59,11 @@ RecipeCard.propTypes = {
   recipe: PropTypes.object
 };
 
-export default RecipeCard;
+const mapDispatchToProps = {
+  navigateToRecipePage
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RecipeCard);

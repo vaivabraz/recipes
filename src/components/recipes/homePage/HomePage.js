@@ -48,7 +48,7 @@ function HomePage(props) {
 }
 
 HomePage.propTypes = {
-  recipes: PropTypes.object,
+  recipes: PropTypes.array,
   error: PropTypes.string
 };
 

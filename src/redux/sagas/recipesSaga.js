@@ -27,8 +27,12 @@ export function* getRecipes() {
 
 export function* postRecipe(data) {
   try {
-    const response = yield call(callPostRecipe, data.recipe);
-    console.log("Response: ", response);
+    if (data.recipe.id) {
+      //update
+    } else {
+      const response = yield call(callPostRecipe, data.recipe);
+      console.log("Response: ", response);
+    }
 
     yield fork(getRecipes);
     yield fork(navigateToHomePage);

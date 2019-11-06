@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Section, Button } from "../common";
-// import { getRecipeBySlug } from "../../api/recipesApi";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { navigateToRecipeForm } from "../../redux/actions/navigationActions";
 
 const Body = styled.div`
   display: flex;
@@ -71,80 +72,31 @@ const Separator = styled.div`
 `;
 
 function RecipePage(props) {
-  const [recipe, setRecipe] = useState({
-    slug: props.match.params.slug,
-    id: null,
-    title: "",
-    author: "",
-    date: "",
-    portions: null,
-    time: null,
-    ingredients: [],
-    preparation: "",
-    image: "",
-    categories: [],
-    notes: "",
-    summary: ""
-  });
-
-  useEffect(() => {
-    // if (!recipe.id) getRecipeBySlug(recipe.slug);
-
-    setRecipe({
-      id: 123123,
-      title: "Kazkas labai skanaus",
-      preparation: `As collected deficient objection by it discovery sincerity curiosity.
-      Quiet decay who round three world whole has mrs man. Built the china
-      there tried jokes which gay why. Assure in adieus wicket it is. But
-      spoke round point and one joy. Offending her moonlight men sweetness see
-      unwilling. Often of it tears whole oh balls share an. Oh to talking
-      improve produce in limited offices fifteen an. Wicket branch to answer
-      do we. Place are decay men hours tiled. If or of ye throwing friendly
-      required. Marianne interest in exertion as. Offering my branched
-      confined oh dashwood.`,
-      author: "VaivaBraz",
-      date: "2019 09.22",
-      portions: 2,
-      time: "40min",
-      ingredients: [
-        { howMuch: "5 saukstai", what: "grietines" },
-        { howMuch: "400g", what: "vistiena" },
-        { howMuch: "2 vnt", what: "porai" },
-        { howMuch: "3", what: "bulves" }
-      ],
-      image: "vistiena.jpg",
-      categories: [
-        "vakariene",
-        "greitai",
-        "kjskdhsbd",
-        "kjshdukasydi",
-        "sakhydiuasydias  ",
-        "dfsdf",
-        "ewhf;ohefbf efoieufe",
-        "lhefuhelufhsiuf"
-      ],
-      notes:
-        "neperkepti, labai greitai sudega, galima pagardinti cesnaku ar dar kazkuo smagiu"
-    });
-  }, []);
-
+  const recipe = props.location.state.recipe;
+  const handleEdit = () => {
+    props.navigateToRecipeForm(recipe);
+  };
   const image = recipe.image && require("../../images/" + recipe.image);
-  const categoriesNum = recipe.categories.length;
+  const categoriesNum = recipe.categories && recipe.categories.length;
 
-  const productsList = recipe.ingredients.map(r => (
-    <li key={r.what + r.howMuch}>
-      {r.howMuch} {r.what}
-    </li>
-  ));
+  const productsList = recipe.ingredients
+    ? recipe.ingredients.map(r => (
+        <li key={r.product + r.quantity}>
+          {r.quantity} {r.product}
+        </li>
+      ))
+    : null;
 
-  const categories = recipe.categories.map((category, index) => {
-    return (
-      <a key={category} href="" className="fontCourier">
-        {category}
-        {index + 1 !== categoriesNum ? ", " : "."}
-      </a>
-    );
-  });
+  const categories =
+    recipe.categories &&
+    recipe.categories.map((category, index) => {
+      return (
+        <a key={category} href="" className="fontCourier">
+          {category}
+          {index + 1 !== categoriesNum ? ", " : "."}
+        </a>
+      );
+    });
 
   return (
     <div className="pageFlexContainer border">
@@ -163,10 +115,12 @@ function RecipePage(props) {
           </Info>
         </LeftColumn>
         <RightColumn>
-          <Section title="Produktai: ">{productsList}</Section>
+          {productsList && (
+            <Section title="Produktai: ">{productsList}</Section>
+          )}
           <Section title="Paruosimas: " text={recipe.preparation} />
           {recipe.notes && <Section title="Pastabos: " text={recipe.notes} />}
-          <Section title="Kategorijos: ">{categories}</Section>
+          {categories && <Section title="Kategorijos: ">{categories}</Section>}
           <BottomContainer>
             <Author>
               <p>{"Autorius: "}</p>
@@ -175,11 +129,7 @@ function RecipePage(props) {
               </a>
             </Author>
             <ButtonsBox>
-              <Button
-                size="small"
-                action={() => console.log("oaoaoaoa")}
-                text="Redaguoti"
-              />
+              <Button size="small" action={handleEdit} text="Redaguoti" />
               <Separator />
               <Button
                 size="small"
@@ -198,4 +148,11 @@ RecipePage.propTypes = {
   match: PropTypes.object
 };
 
-export default RecipePage;
+const mapDispatchToProps = {
+  navigateToRecipeForm
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(RecipePage);

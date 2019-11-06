@@ -7,6 +7,13 @@ export function navigateToRecipeForm(recipe = {}) {
   };
 }
 
+export function navigateToRecipePage(recipe) {
+  return {
+    type: types.NAVIGATE_TO_RECIPE_PAGE,
+    recipe
+  };
+}
+
 export function navigateToHomePage() {
   return {
     type: types.NAVIGATE_TO_HOME_PAGE

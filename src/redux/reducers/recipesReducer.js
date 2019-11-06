@@ -2,7 +2,8 @@ import * as types from "../actions/actionTypes";
 import { Record, List } from "immutable";
 
 const initialState = Record({
-  recipes: List(),
+  recipes: [],
+  // recipes: List(),
   currentRecipe: null,
   error: null
 });
@@ -17,7 +18,7 @@ const Recipe = Record({
 
 function setRecipes(state, recipes) {
   const recipesList = List(recipes.map(r => new Recipe(r)));
-  return state.set("recipes", recipesList);
+  return state.set("recipes", recipes);
 }
 
 function setError(state, error) {
