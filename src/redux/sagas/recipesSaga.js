@@ -2,8 +2,9 @@ import { put, call, takeLeading, all, fork } from "redux-saga/effects";
 
 import * as actionTypes from "../actions/actionTypes";
 import {
-  getRecipes as callGetRecipes,
-  postRecipe as callPostRecipe
+  getRecipesApi,
+  postRecipeApi,
+  putRecipeApi
 } from "../../api/recipesApi";
 import * as recipesActions from "../actions/recipesActions";
 import { navigateToHomePage } from "./navigationSaga";
@@ -17,7 +18,7 @@ export default function* saga() {
 
 export function* getRecipes() {
   try {
-    const response = yield call(callGetRecipes);
+    const response = yield call(getRecipesApi);
     yield put(recipesActions.setRecipes(response));
   } catch (e) {
     console.log("Error: ", e);
@@ -27,11 +28,12 @@ export function* getRecipes() {
 
 export function* postRecipe(data) {
   try {
-    if (data.recipe.id) {
-      //update
+    if (data.recipe._id) {
+      const response = yield call(putRecipeApi, data.recipe);
+      console.log("Response putted: ", response);
     } else {
-      const response = yield call(callPostRecipe, data.recipe);
-      console.log("Response: ", response);
+      const response = yield call(postRecipeApi, data.recipe);
+      console.log("Response posted: ", response);
     }
 
     yield fork(getRecipes);

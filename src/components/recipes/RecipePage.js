@@ -76,7 +76,8 @@ function RecipePage(props) {
   const handleEdit = () => {
     props.navigateToRecipeForm(recipe);
   };
-  const image = recipe.image && require("../../images/" + recipe.image);
+  const image = require("../../images/vistiena.jpg");
+  // const image = recipe.image && require("../../images/" + recipe.image);
   const categoriesNum = recipe.categories && recipe.categories.length;
 
   const productsList = recipe.ingredients

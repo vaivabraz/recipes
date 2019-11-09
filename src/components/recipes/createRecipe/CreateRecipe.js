@@ -49,7 +49,7 @@ const ButtonBox = styled.div`
 function CreateRecipe(props) {
   const currentRecipe = props.location.state.recipe;
   const [recipe, setRecipe] = useState({
-    id: currentRecipe._id || null,
+    _id: currentRecipe._id || null,
     title: currentRecipe.title || "",
     preparation: currentRecipe.preparation || "",
     notes: currentRecipe.notes || "",

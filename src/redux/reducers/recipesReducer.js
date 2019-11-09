@@ -9,7 +9,7 @@ const initialState = Record({
 });
 
 const Recipe = Record({
-  id: 0,
+  _id: 0,
   title: "",
   summary: "",
   image: "",
