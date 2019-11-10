@@ -39,3 +39,12 @@ export function putRecipeApi(data) {
     .then(handleResponse)
     .catch(handleError);
 }
+
+export function deleteRecipeApi(recipeId) {
+  const url = localAPI + "/" + recipeId;
+  return fetch(url, {
+    method: "delete"
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}

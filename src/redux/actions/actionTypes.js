@@ -1,6 +1,7 @@
 export const GET_RECIPES = "GET_RECIPES";
 export const SET_RECIPES = "SET_RECIPES";
 export const POST_RECIPE = "POST_RECIPE";
+export const DELETE_RECIPE = "DELETE_RECIPE";
 export const SET_ERROR = "SET_ERROR";
 
 export const NAVIGATE_TO_HOME_PAGE = "NAVIGATE_TO_HOME_PAGE";

@@ -4,6 +4,7 @@ import { Section, Button } from "../common";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { navigateToRecipeForm } from "../../redux/actions/navigationActions";
+import { deleteRecipe } from "../../redux/actions/recipesActions";
 
 const Body = styled.div`
   display: flex;
@@ -76,6 +77,11 @@ function RecipePage(props) {
   const handleEdit = () => {
     props.navigateToRecipeForm(recipe);
   };
+
+  const handleDelete = () => {
+    props.deleteRecipe(recipe._id);
+  };
+
   const image = require("../../images/vistiena.jpg");
   // const image = recipe.image && require("../../images/" + recipe.image);
   const categoriesNum = recipe.categories && recipe.categories.length;
@@ -132,11 +138,7 @@ function RecipePage(props) {
             <ButtonsBox>
               <Button size="small" action={handleEdit} text="Redaguoti" />
               <Separator />
-              <Button
-                size="small"
-                action={() => console.log("oaoaoaoa")}
-                text="Istrinti"
-              />
+              <Button size="small" action={handleDelete} text="Istrinti" />
             </ButtonsBox>
           </BottomContainer>
         </RightColumn>
@@ -150,7 +152,8 @@ RecipePage.propTypes = {
 };
 
 const mapDispatchToProps = {
-  navigateToRecipeForm
+  navigateToRecipeForm,
+  deleteRecipe
 };
 
 export default connect(

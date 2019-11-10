@@ -20,6 +20,13 @@ export function postRecipe(recipe) {
   };
 }
 
+export function deleteRecipe(recipeId) {
+  return {
+    type: types.DELETE_RECIPE,
+    recipeId
+  };
+}
+
 export function setError(error) {
   return {
     type: types.SET_ERROR,

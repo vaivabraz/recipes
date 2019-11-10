@@ -4,7 +4,8 @@ import * as actionTypes from "../actions/actionTypes";
 import {
   getRecipesApi,
   postRecipeApi,
-  putRecipeApi
+  putRecipeApi,
+  deleteRecipeApi
 } from "../../api/recipesApi";
 import * as recipesActions from "../actions/recipesActions";
 import { navigateToHomePage } from "./navigationSaga";
@@ -12,7 +13,8 @@ import { navigateToHomePage } from "./navigationSaga";
 export default function* saga() {
   yield all([
     takeLeading(actionTypes.GET_RECIPES, getRecipes),
-    takeLeading(actionTypes.POST_RECIPE, postRecipe)
+    takeLeading(actionTypes.POST_RECIPE, postRecipe),
+    takeLeading(actionTypes.DELETE_RECIPE, deleteRecipe)
   ]);
 }
 
@@ -35,6 +37,19 @@ export function* postRecipe(data) {
       const response = yield call(postRecipeApi, data.recipe);
       console.log("Response posted: ", response);
     }
+
+    yield fork(getRecipes);
+    yield fork(navigateToHomePage);
+    yield;
+  } catch (e) {
+    console.log("Error: ", e);
+  }
+}
+
+export function* deleteRecipe(data) {
+  try {
+    yield call(deleteRecipeApi, data.recipeId);
+    console.log("Recipe deleted");
 
     yield fork(getRecipes);
     yield fork(navigateToHomePage);
