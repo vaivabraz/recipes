@@ -1,53 +1,18 @@
 import React, { useState } from "react";
-import { TextInput, Button } from "../../common";
-import IngredientLine from "./IngredientLine";
-import styled from "styled-components";
+import CreateRecipeView from "./CreateRecipeView";
 import { postRecipe } from "../../../redux/actions/recipesActions";
 import { connect } from "react-redux";
 
-const MainContainer = styled.div`
-  display: flex;
-`;
-
-const LeftContainer = styled.div`
-  flex: 5;
-  flex-direction: column;
-`;
-
-const RightContainer = styled.div`
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-left: 20px;
-`;
-
-const AddNewIngredientLine = styled.div`
-  padding-left: 20px;
-  display: flex;
-  align-items: center;
-  color: #b3acac;
-`;
-
-const ImageContainer = styled.div`
-  background-color: rgb(219, 209, 193);
-  margin-top: 110px;
-  margin-bottom: 30px;
-  width: 300px;
-  height: 300px;
-
-  justify-content: center;
-  display: flex;
-  align-items: center;
-`;
-
-const ButtonBox = styled.div`
-  padding: 40px 20px;
-  display: flex;
-`;
-
 function CreateRecipe(props) {
   const currentRecipe = props.location.state.recipe;
+  const products =
+    currentRecipe.ingredients && currentRecipe.ingredients.length > 0
+      ? currentRecipe.ingredients
+      : [
+          { product: "", quantity: "", id: 0 },
+          { product: "", quantity: "", id: 1 },
+          { product: "", quantity: "", id: 2 }
+        ];
   const [recipe, setRecipe] = useState({
     _id: currentRecipe._id || null,
     title: currentRecipe.title || "",
@@ -58,11 +23,7 @@ function CreateRecipe(props) {
     time: currentRecipe.time || "",
     portions: currentRecipe.portions || null,
     categories: currentRecipe.categories || "",
-    ingredients: [
-      { product: "", quantity: "", id: 0 },
-      { product: "", quantity: "", id: 1 },
-      { product: "", quantity: "", id: 2 }
-    ]
+    ingredients: products
 
     // categories: [
     //       "vakariene",
@@ -130,86 +91,15 @@ function CreateRecipe(props) {
     props.postRecipe(recipe);
   };
 
-  const ingredientsList = recipe.ingredients.map(r => (
-    <IngredientLine
-      key={r.id}
-      entry={r}
-      onChange={handleIngredientChange}
-      onRemove={handleRemoveIngredient}
-    />
-  ));
-
   return (
-    <form className="pageFlexContainer flexColumn border">
-      <MainContainer className="flexColumnSmallScreen">
-        <LeftContainer>
-          <h1>Sukurti recepta</h1>
-          <TextInput
-            label="pavadinimas"
-            name="title"
-            value={recipe.title}
-            onChange={handleChange}
-          />
-          <p className="textInputLabel">ingredientai</p>
-          {ingredientsList}
-          <AddNewIngredientLine className="addNewIngredient">
-            <button className="circleButton" onClick={handleAddIngredient}>
-              +
-            </button>
-            <h4>Prideti nauja produkta</h4>
-          </AddNewIngredientLine>
-          <TextInput
-            label="paruosimas"
-            name="preparation"
-            multiline
-            value={recipe.preparation}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="pastabos"
-            name="notes"
-            value={recipe.notes}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="trumpai apie recepta"
-            name="summary"
-            value={recipe.summary}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="kiek laiko uztruks"
-            inline
-            name="time"
-            value={recipe.time}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="porciju skaicius"
-            inline
-            type="number"
-            name="portions"
-            value={recipe.portions}
-            onChange={handleChange}
-          />
-          <TextInput
-            label="KATEGORIJOS"
-            multiline
-            name="categories"
-            value={recipe.categories}
-            onChange={handleChange}
-          />
-        </LeftContainer>
-        <RightContainer>
-          <ImageContainer>
-            <h2>IMG</h2>
-          </ImageContainer>
-        </RightContainer>
-      </MainContainer>
-      <ButtonBox>
-        <Button text="SUKURTI" action={handleSubmit}></Button>
-      </ButtonBox>
-    </form>
+    <CreateRecipeView
+      recipe={recipe}
+      handleChange={handleChange}
+      handleAddIngredient={handleAddIngredient}
+      handleIngredientChange={handleIngredientChange}
+      handleRemoveIngredient={handleRemoveIngredient}
+      handleSubmit={handleSubmit}
+    />
   );
 }
 
