@@ -1,22 +1,21 @@
 import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/recipes/";
-const localAPI = "http://localhost:4000/api/recipes";
-const herokuAPI = "https://awesome-recipes-backend.herokuapp.com/api/recipes";
+const baseUrl = process.env.REACT_APP_API_URL;
+const recipesUrl = baseUrl + "api/recipes";
 
 export function getRecipesApi() {
-  return fetch(localAPI)
+  return fetch(recipesUrl)
     .then(handleResponse)
     .catch(handleError);
 }
 
 export function getRecipeBySlugApi(slug) {
-  return fetch(baseUrl + "/" + slug)
+  return fetch(recipesUrl + "/" + slug)
     .then(handleResponse)
     .catch(handleError);
 }
 
 export function postRecipeApi(data) {
-  return fetch(localAPI, {
+  return fetch(recipesUrl, {
     method: "post",
 
     body: JSON.stringify(data),
@@ -29,7 +28,7 @@ export function postRecipeApi(data) {
 }
 
 export function putRecipeApi(data) {
-  return fetch(localAPI + "/" + data._id, {
+  return fetch(recipesUrl + "/" + data._id, {
     method: "put",
     body: JSON.stringify(data),
     headers: {
@@ -41,7 +40,7 @@ export function putRecipeApi(data) {
 }
 
 export function deleteRecipeApi(recipeId) {
-  const url = localAPI + "/" + recipeId;
+  const url = recipesUrl + "/" + recipeId;
   return fetch(url, {
     method: "delete"
   })

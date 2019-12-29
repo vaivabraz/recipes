@@ -7,6 +7,7 @@ import "./classes.css";
 import configureStore, { history } from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 import { getRecipes } from "./redux/actions/recipesActions";
+require("dotenv").config();
 
 const store = configureStore();
 render(

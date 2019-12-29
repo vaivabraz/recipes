@@ -34,6 +34,7 @@ export function* postRecipe(data) {
       const response = yield call(putRecipeApi, data.recipe);
       console.log("Response putted: ", response);
     } else {
+      data.recipe.author = "VaivaBraz"; //TODO
       const response = yield call(postRecipeApi, data.recipe);
       console.log("Response posted: ", response);
     }
