@@ -29,7 +29,6 @@ function CreateRecipe(props) {
     //       "vakariene",
     //       "greitai"
     //     ],
-    //   author: "",
     //   date: "",
     //   slug: props.match.params.slug,
   });
@@ -107,7 +106,4 @@ const mapDispatchToProps = {
   postRecipe
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(CreateRecipe);
+export default connect(null, mapDispatchToProps)(CreateRecipe);

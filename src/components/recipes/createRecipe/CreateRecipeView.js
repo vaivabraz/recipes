@@ -53,12 +53,13 @@ function CreateRecipeView(props) {
       onRemove={props.handleRemoveIngredient}
     />
   ));
-
+  const title = props.recipe._id ? "Redaguoti receptą" : "Sukurti receptą";
+  const buttonText = props.recipe._id ? "Išsaugoti receptą" : "Sukurti receptą";
   return (
     <form className="pageFlexContainer flexColumn border">
       <MainContainer className="flexColumnSmallScreen">
         <LeftContainer>
-          <h1>Sukurti recepta</h1>
+          <h1>{title}</h1>
           <TextInput
             label="pavadinimas"
             name="title"
@@ -125,7 +126,7 @@ function CreateRecipeView(props) {
         </RightContainer>
       </MainContainer>
       <ButtonBox>
-        <Button text="SUKURTI" action={props.handleSubmit}></Button>
+        <Button text={buttonText} action={props.handleSubmit}></Button>
       </ButtonBox>
     </form>
   );
