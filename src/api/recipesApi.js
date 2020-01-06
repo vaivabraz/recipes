@@ -8,6 +8,12 @@ export function getRecipesApi() {
     .catch(handleError);
 }
 
+export function getRecipeApi(slug) {
+  return fetch(recipesUrl + "?slug=" + slug)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export function getRecipeBySlugApi(slug) {
   return fetch(recipesUrl + "/" + slug)
     .then(handleResponse)

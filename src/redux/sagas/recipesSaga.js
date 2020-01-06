@@ -41,7 +41,6 @@ export function* postRecipe(data) {
 
     yield fork(getRecipes);
     yield fork(navigateToHomePage);
-    yield;
   } catch (e) {
     console.log("Error: ", e);
   }

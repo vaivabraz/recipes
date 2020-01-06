@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Section, Button } from "../common";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { navigateToRecipeForm } from "../../redux/actions/navigationActions";
 import { deleteRecipe } from "../../redux/actions/recipesActions";
+import { getRecipeApi } from "../../api/recipesApi";
 
 const Body = styled.div`
   display: flex;
@@ -73,7 +74,51 @@ const Separator = styled.div`
 `;
 
 function RecipePage(props) {
-  const recipe = props.location.state.recipe;
+  const [loading, setLoading] = useState(true);
+  const [recipe, setRecipe] = useState([]);
+
+  useEffect(() => {
+    if (!props.location.state) {
+      fetchData();
+    } else {
+      setRecipe(props.location.state.recipe);
+      setLoading(false);
+    }
+  }, []);
+
+  async function fetchData() {
+    const response = await getRecipeApi(props.match.params.slug);
+    setRecipe(response[0]);
+    setLoading(false);
+  }
+
+  let image, productsList, categories;
+
+  if (recipe) {
+    image = require("../../images/vistiena.jpg");
+    // const image = recipe.image && require("../../images/" + recipe.image);
+    const categoriesNum = recipe.categories && recipe.categories.length;
+
+    productsList = recipe.ingredients
+      ? recipe.ingredients.map(r => (
+          <li key={r.product + r.quantity}>
+            {r.quantity} {r.product}
+          </li>
+        ))
+      : null;
+
+    categories =
+      recipe.categories &&
+      recipe.categories.map((category, index) => {
+        return (
+          <a key={category} href="" className="fontCourier">
+            {category}
+            {index + 1 !== categoriesNum ? ", " : "."}
+          </a>
+        );
+      });
+  }
+
   const handleEdit = () => {
     props.navigateToRecipeForm(recipe);
   };
@@ -82,67 +127,56 @@ function RecipePage(props) {
     props.deleteRecipe(recipe._id);
   };
 
-  const image = require("../../images/vistiena.jpg");
-  // const image = recipe.image && require("../../images/" + recipe.image);
-  const categoriesNum = recipe.categories && recipe.categories.length;
-
-  const productsList = recipe.ingredients
-    ? recipe.ingredients.map(r => (
-        <li key={r.product + r.quantity}>
-          {r.quantity} {r.product}
-        </li>
-      ))
-    : null;
-
-  const categories =
-    recipe.categories &&
-    recipe.categories.map((category, index) => {
-      return (
-        <a key={category} href="" className="fontCourier">
-          {category}
-          {index + 1 !== categoriesNum ? ", " : "."}
-        </a>
-      );
-    });
-
   return (
     <div className="pageFlexContainer border">
-      <Title className="alignCenter">{recipe.title}</Title>
-      <Body className="flexColumnSmallScreen">
-        <LeftColumn className="alignCenter">
-          <Image
-            className="border"
-            src={image}
-            title={recipe.title}
-            alt={recipe.title}
-          />
-          <Info>
-            {recipe.portions && <h4>Porciju skaicius: {recipe.portions}</h4>}
-            {recipe.time && <h4>Uztruks laiko: {recipe.time}</h4>}
-          </Info>
-        </LeftColumn>
-        <RightColumn>
-          {productsList && (
-            <Section title="Produktai: ">{productsList}</Section>
-          )}
-          <Section title="Paruosimas: " text={recipe.preparation} />
-          {recipe.notes && <Section title="Pastabos: " text={recipe.notes} />}
-          {categories && <Section title="Kategorijos: ">{categories}</Section>}
-          <BottomContainer>
-            <Author>
-              <p>{"Autorius: "}</p>
-              <a href="">
-                <h5>{recipe.author}</h5>
-              </a>
-            </Author>
-            <ButtonsBox>
-              <Button size="small" action={handleEdit} text="Redaguoti" />
-              <Separator />
-              <Button size="small" action={handleDelete} text="Istrinti" />
-            </ButtonsBox>
-          </BottomContainer>
-        </RightColumn>
-      </Body>
+      {loading ? (
+        <Title className="alignCenter">KRAUNAS</Title>
+      ) : (
+        <div>
+          <Title className="alignCenter">{recipe.title}</Title>
+          <Body className="flexColumnSmallScreen">
+            <LeftColumn className="alignCenter">
+              <Image
+                className="border"
+                src={image}
+                title={recipe.title}
+                alt={recipe.title}
+              />
+              <Info>
+                {recipe.portions && (
+                  <h4>Porciju skaicius: {recipe.portions}</h4>
+                )}
+                {recipe.time && <h4>Uztruks laiko: {recipe.time}</h4>}
+              </Info>
+            </LeftColumn>
+            <RightColumn>
+              {productsList && (
+                <Section title="Produktai: ">{productsList}</Section>
+              )}
+              <Section title="Paruosimas: " text={recipe.preparation} />
+              {recipe.notes && (
+                <Section title="Pastabos: " text={recipe.notes} />
+              )}
+              {categories && (
+                <Section title="Kategorijos: ">{categories}</Section>
+              )}
+              <BottomContainer>
+                <Author>
+                  <p>{"Autorius: "}</p>
+                  <a href="">
+                    <h5>{recipe.author}</h5>
+                  </a>
+                </Author>
+                <ButtonsBox>
+                  <Button size="small" action={handleEdit} text="Redaguoti" />
+                  <Separator />
+                  <Button size="small" action={handleDelete} text="Istrinti" />
+                </ButtonsBox>
+              </BottomContainer>
+            </RightColumn>
+          </Body>
+        </div>
+      )}
     </div>
   );
 }
@@ -156,7 +190,4 @@ const mapDispatchToProps = {
   deleteRecipe
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RecipePage);
+export default connect(null, mapDispatchToProps)(RecipePage);
