@@ -87,6 +87,9 @@ function CreateRecipe(props) {
   };
 
   const handleSubmit = () => {
+    recipe.ingredients = recipe.ingredients.filter(
+      i => i.product || i.quantity
+    );
     props.postRecipe(recipe);
   };
 
