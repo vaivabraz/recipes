@@ -19,8 +19,7 @@ export function* navigateToRecipePage(data) {
   const link = "/recipes/" + data.recipe.slug;
   yield put(
     push({
-      pathname: link,
-      state: { recipe: data.recipe }
+      pathname: link
     })
   );
 }

@@ -78,12 +78,7 @@ function RecipePage(props) {
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
-    if (!props.location.state) {
-      fetchData();
-    } else {
-      setRecipe(props.location.state.recipe);
-      setLoading(false);
-    }
+    fetchData();
   }, []);
 
   async function fetchData() {
