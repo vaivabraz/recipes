@@ -78,6 +78,7 @@ function RecipePage(props) {
   const [recipe, setRecipe] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchData();
   }, []);
 

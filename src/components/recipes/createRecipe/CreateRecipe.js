@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateRecipeView from "./CreateRecipeView";
 import { postRecipe } from "../../../redux/actions/recipesActions";
 import { connect } from "react-redux";
 
 function CreateRecipe(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const currentRecipe = props.location.state.recipe;
   const products =
     currentRecipe.ingredients && currentRecipe.ingredients.length > 0
