@@ -3,6 +3,15 @@ import { Record, List } from "immutable";
 
 const initialState = Record({
   recipes: [],
+  categories: [
+    "Pusryčiai",
+    "Pietūs",
+    "Desertai",
+    "Gėrimai",
+    "Vegetariška",
+    "Šventiniai pietūs",
+    "Greitai"
+  ],
   // recipes: List(),
   currentRecipe: null,
   error: null
