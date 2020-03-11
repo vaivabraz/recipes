@@ -7,7 +7,7 @@ function CreateRecipe(props) {
   const currentRecipe = props.location.state.recipe;
   const products =
     currentRecipe.ingredients && currentRecipe.ingredients.length > 0
-      ? currentRecipe.ingredients
+      ? JSON.parse(JSON.stringify(currentRecipe.ingredients))
       : [
           { product: "", quantity: "", id: 0 },
           { product: "", quantity: "", id: 1 },
