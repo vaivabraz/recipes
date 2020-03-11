@@ -25,7 +25,7 @@ function CreateRecipe(props) {
     summary: currentRecipe.summary || "",
     image: currentRecipe.image || "",
     time: currentRecipe.time || "",
-    portions: currentRecipe.portions || null,
+    portions: currentRecipe.portions || "",
     categories: currentRecipe.categories || "",
     ingredients: products
 
