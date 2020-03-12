@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import CreateRecipeView from "./CreateRecipeView";
 import { postRecipe } from "../../../redux/actions/recipesActions";
-import { connect } from "react-redux";
 
 function CreateRecipe(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const dispatch = useDispatch();
   const currentRecipe = props.location.state.recipe;
   const products =
     currentRecipe.ingredients && currentRecipe.ingredients.length > 0
@@ -28,11 +29,6 @@ function CreateRecipe(props) {
     portions: currentRecipe.portions || "",
     categories: currentRecipe.categories || "",
     ingredients: products
-
-    // categories: [
-    //       "vakariene",
-    //       "greitai"
-    //     ],
     //   date: "",
     //   slug: props.match.params.slug,
   });
@@ -94,7 +90,7 @@ function CreateRecipe(props) {
     recipe.ingredients = recipe.ingredients.filter(
       i => i.product || i.quantity
     );
-    props.postRecipe(recipe);
+    dispatch(postRecipe(recipe));
   };
 
   return (
@@ -109,8 +105,4 @@ function CreateRecipe(props) {
   );
 }
 
-const mapDispatchToProps = {
-  postRecipe
-};
-
-export default connect(null, mapDispatchToProps)(CreateRecipe);
+export default CreateRecipe;
