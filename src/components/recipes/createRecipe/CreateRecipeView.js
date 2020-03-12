@@ -2,6 +2,7 @@ import React from "react";
 import { TextInput, Button } from "../../common";
 import IngredientLine from "./IngredientLine";
 import styled from "styled-components";
+import { ReactComponent as AddIcon } from "../../common/icons/add.svg";
 
 const MainContainer = styled.div`
   display: flex;
@@ -73,7 +74,7 @@ function CreateRecipeView(props) {
               className="circleButton"
               onClick={props.handleAddIngredient}
             >
-              +
+              <AddIcon />
             </button>
             <h4>Prideti nauja produkta</h4>
           </AddNewIngredientLine>

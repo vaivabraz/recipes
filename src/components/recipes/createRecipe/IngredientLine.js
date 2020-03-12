@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import { ReactComponent as RemoveIcon } from "../../common/icons/remove.svg";
 
 const Line = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ function IngredientLine(props) {
         name={"quantity"}
       />
       <button className="circleButton" onClick={onRemoveProduct}>
-        X
+        <RemoveIcon />
       </button>
     </Line>
   );

@@ -36,14 +36,9 @@
 }
 
 .circleButton {
-  font-family: "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
-  font-size: 26;
-  color: #b3acac;
-  width: 30px;
-  height: 30px;
-  border: 1px #dbdbdb solid;
-  border-radius: 15px;
-  margin: 5px;
+  width: 36px;
+  height: 36px;
+  border: none;
 }
 
 .inputTextStyling {
