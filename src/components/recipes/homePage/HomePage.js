@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../common";
 import {
   getRecipes,
-  getCategories,
   getError
 } from "../../../redux/selectors/recipesSelectors";
+import { getCategories } from "../../../redux/selectors/userSelectors";
 import { navigateToRecipeForm } from "../../../redux/actions/navigationActions";
 import { RecipesList, CategoriesList } from ".";
 import styled from "styled-components";
