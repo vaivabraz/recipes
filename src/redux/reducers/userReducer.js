@@ -7,7 +7,7 @@ const initalState = Record({
 });
 
 function setCategories(state, info) {
-  return state.set("categories", info.userCategories);
+  return state.set("categories", info.userCategories.sort());
 }
 
 export default function userReducer(state = new initalState(), action) {

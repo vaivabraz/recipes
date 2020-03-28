@@ -1,6 +1,7 @@
 import React from "react";
 import { TextInput, Button } from "../../common";
 import IngredientLine from "./IngredientLine";
+import CategoryLine from "./CategoryLine";
 import styled from "styled-components";
 import { ReactComponent as AddIcon } from "../../common/icons/add.svg";
 
@@ -112,12 +113,11 @@ function CreateRecipeView(props) {
             value={props.recipe.portions}
             onChange={props.handleChange}
           />
-          <TextInput
-            label="KATEGORIJOS"
-            multiline
+          <p className="textInputLabel">kategorijos</p>
+          <CategoryLine
             name="categories"
             value={props.recipe.categories}
-            onChange={props.handleChange}
+            onChange={props.handleCategoriesChange}
           />
         </LeftContainer>
         <RightContainer>

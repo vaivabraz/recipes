@@ -27,7 +27,11 @@ function CreateRecipe(props) {
     image: currentRecipe.image || "",
     time: currentRecipe.time || "",
     portions: currentRecipe.portions || "",
-    categories: currentRecipe.categories || "",
+    categories: currentRecipe.categories
+      ? currentRecipe.categories.map(c => {
+          return { value: c, label: c };
+        })
+      : [],
     ingredients: products
     //   date: "",
     //   slug: props.match.params.slug,
@@ -86,11 +90,24 @@ function CreateRecipe(props) {
     });
   };
 
+  const handleCategoriesChange = props => {
+    setRecipe({
+      ...recipe,
+      categories: props
+    });
+  };
+
   const handleSubmit = () => {
-    recipe.ingredients = recipe.ingredients.filter(
+    let filteredIngredients = recipe.ingredients.filter(
       i => i.product || i.quantity
     );
-    dispatch(postRecipe(recipe));
+    const filteredCategories = recipe.categories.map(i => i.value);
+    const finalRecipe = {
+      ...recipe,
+      ingredients: filteredIngredients,
+      categories: filteredCategories
+    };
+    dispatch(postRecipe(finalRecipe));
   };
 
   return (
@@ -100,6 +117,7 @@ function CreateRecipe(props) {
       handleAddIngredient={handleAddIngredient}
       handleIngredientChange={handleIngredientChange}
       handleRemoveIngredient={handleRemoveIngredient}
+      handleCategoriesChange={handleCategoriesChange}
       handleSubmit={handleSubmit}
     />
   );
