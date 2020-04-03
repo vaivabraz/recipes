@@ -7,3 +7,7 @@ export function getCategories(state) {
 export function getUsername(state) {
   return userState(state).get("username");
 }
+
+export function getIsLoggedIn(state) {
+  return userState(state).get("isLoggedIn");
+}
