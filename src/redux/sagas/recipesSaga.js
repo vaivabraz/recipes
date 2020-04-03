@@ -5,7 +5,7 @@ import {
   getRecipesApi,
   postRecipeApi,
   putRecipeApi,
-  deleteRecipeApi
+  deleteRecipeApi,
 } from "../../api/recipesApi";
 import * as recipesActions from "../actions/recipesActions";
 import { navigateToHomePage } from "./navigationSaga";
@@ -14,7 +14,7 @@ export default function* saga() {
   yield all([
     takeLeading(actionTypes.GET_RECIPES, getRecipes),
     takeLeading(actionTypes.POST_RECIPE, postRecipe),
-    takeLeading(actionTypes.DELETE_RECIPE, deleteRecipe)
+    takeLeading(actionTypes.DELETE_RECIPE, deleteRecipe),
   ]);
 }
 

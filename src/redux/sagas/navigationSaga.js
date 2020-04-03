@@ -7,7 +7,7 @@ export default function* saga() {
   yield all([
     takeLeading(actionTypes.NAVIGATE_TO_RECIPE_FORM, navigateToRecipeForm),
     takeLeading(actionTypes.NAVIGATE_TO_RECIPE_PAGE, navigateToRecipePage),
-    takeLeading(actionTypes.NAVIGATE_TO_HOME_PAGE, navigateToRecipeForm)
+    takeLeading(actionTypes.NAVIGATE_TO_HOME_PAGE, navigateToRecipeForm),
   ]);
 }
 
@@ -19,7 +19,7 @@ export function* navigateToRecipePage(data) {
   const link = "/recipes/" + data.recipe.slug;
   yield put(
     push({
-      pathname: link
+      pathname: link,
     })
   );
 }
@@ -29,7 +29,7 @@ export function* navigateToRecipeForm(data) {
   yield put(
     push({
       pathname: link,
-      state: { recipe: data.recipe }
+      state: { recipe: data.recipe },
     })
   );
 }
