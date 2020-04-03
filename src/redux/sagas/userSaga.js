@@ -1,12 +1,23 @@
-import { put, call, takeLeading, all, select } from "redux-saga/effects";
-
+import { put, call, takeLeading, all, select, fork } from "redux-saga/effects";
 import * as actionTypes from "../actions/actionTypes";
 import { geUserApi } from "../../api/usersApi";
 import { getUsername } from "../selectors/userSelectors";
-import { setUserInformation } from "../actions/userActions";
+import { setUserInformation, setLogInStatus } from "../actions/userActions";
+import { getRecipes } from "./recipesSaga";
+import { navigateToHomePage } from "./navigationSaga";
 
 export default function* saga() {
-  yield all([takeLeading(actionTypes.LOAD_USER, loadUser)]);
+  yield all([
+    takeLeading(actionTypes.LOAD_USER, loadUser),
+    takeLeading(actionTypes.LOG_IN, logIn),
+  ]);
+}
+
+export function* logIn() {
+  yield put(setLogInStatus(true));
+  yield call(loadUser);
+  yield fork(getRecipes);
+  yield fork(navigateToHomePage);
 }
 
 export function* loadUser() {
