@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Colors from "../common/Colors";
 
 function ProfilePage(props) {
   const title = "Kazkas labai skanaus 101";
@@ -14,24 +15,24 @@ function ProfilePage(props) {
     <div
       className="pageFlexContainer"
       style={{
-        flexDirection: "column"
+        flexDirection: "column",
       }}
     >
       <h1>PROFILE PAGE</h1>
       <h2>hello, {props.name}</h2>
 
-      <h1 style={{ backgroundColor: "#f4f4f4" }}>H1 {title}</h1>
+      <h1 style={{ backgroundColor: Colors.lightGrey }}>H1 {title}</h1>
       <h2>H2 {title}</h2>
-      <h3 style={{ backgroundColor: "#f4f4f4" }}>H3 {title}</h3>
+      <h3 style={{ backgroundColor: Colors.lightGrey }}>H3 {title}</h3>
       <h4>H4 {title}</h4>
-      <h5 style={{ backgroundColor: "#f4f4f4" }}>H5 {title}</h5>
+      <h5 style={{ backgroundColor: Colors.lightGrey }}>H5 {title}</h5>
       <h6>H6 {title}</h6>
     </div>
   );
 }
 
 ProfilePage.propTypes = {
-  name: PropTypes.string
+  name: PropTypes.string,
 };
 
 export default ProfilePage;

@@ -3,7 +3,7 @@
 }
 
 .error {
-  background-color: rgb(175, 91, 91);
+  background-color: #af5b5b;
   padding: 6px;
 }
 
@@ -16,9 +16,9 @@
 .pageFlexContainer {
   display: flex;
   flex-wrap: wrap;
-  min-height: 700px;
+  min-height: 87.5vh;
   padding: 24px;
-  margin: 40px 100px;
+  margin: 2.5vh 6vh;
 }
 
 .flexColumn {
