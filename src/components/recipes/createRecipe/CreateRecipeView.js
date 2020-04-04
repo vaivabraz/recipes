@@ -4,6 +4,7 @@ import IngredientLine from "./IngredientLine";
 import CategoryLine from "./CategoryLine";
 import styled from "styled-components";
 import { ReactComponent as AddIcon } from "../../common/icons/add.svg";
+import Colors from "../../common/Colors";
 
 const MainContainer = styled.div`
   display: flex;
@@ -26,11 +27,11 @@ const AddNewIngredientLine = styled.div`
   padding-left: 20px;
   display: flex;
   align-items: center;
-  color: #b3acac;
+  color: ${Colors.pinkGrey};
 `;
 
 const ImageContainer = styled.div`
-  background-color: rgb(219, 209, 193);
+  background-color: ${Colors.sandy};
   margin-top: 110px;
   margin-bottom: 30px;
   width: 300px;
@@ -47,7 +48,7 @@ const ButtonBox = styled.div`
 `;
 
 function CreateRecipeView(props) {
-  const ingredientsList = props.recipe.ingredients.map(r => (
+  const ingredientsList = props.recipe.ingredients.map((r) => (
     <IngredientLine
       key={r.id}
       entry={r}

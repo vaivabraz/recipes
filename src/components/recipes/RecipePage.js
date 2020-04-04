@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { navigateToRecipeForm } from "../../redux/actions/navigationActions";
 import { deleteRecipe } from "../../redux/actions/recipesActions";
 import { getRecipeApi } from "../../api/recipesApi";
+import Colors from "../common/Colors";
 
 const Body = styled.div`
   display: flex;
@@ -45,7 +46,7 @@ const Info = styled.div`
   margin: 10px 0;
   h4 {
     padding: 3px 0px;
-    color: rgb(141, 141, 126);
+    color: ${Colors.greenGrey};
   }
 `;
 
@@ -96,7 +97,7 @@ function RecipePage(props) {
     const categoriesNum = recipe.categories && recipe.categories.length;
 
     productsList = recipe.ingredients
-      ? recipe.ingredients.map(r => (
+      ? recipe.ingredients.map((r) => (
           <li key={r.product + r.quantity}>
             {r.quantity} {r.product}
           </li>
@@ -178,12 +179,12 @@ function RecipePage(props) {
 }
 
 RecipePage.propTypes = {
-  match: PropTypes.object
+  match: PropTypes.object,
 };
 
 const mapDispatchToProps = {
   navigateToRecipeForm,
-  deleteRecipe
+  deleteRecipe,
 };
 
 export default connect(null, mapDispatchToProps)(RecipePage);

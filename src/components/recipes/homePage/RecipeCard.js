@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { navigateToRecipePage } from "../../../redux/actions/navigationActions";
+import Colors from "../../common/Colors";
 
 const Card = styled.button`
-  color: #281708;
-  background-color: #f4f4f4;
+  color: ${Colors.darkBordo};
+  background-color: ${Colors.lightGrey};
 
   display: flex;
   flex-direction: column;
@@ -14,8 +15,8 @@ const Card = styled.button`
   justify-content: flex-start;
   align-items: center;
   &:hover {
-    background-color: white;
-    color: #a53e3e;
+    background-color: ${Colors.white};
+    color: ${Colors.error};
   }
 `;
 
@@ -56,14 +57,11 @@ function RecipeCard(props) {
 }
 
 RecipeCard.propTypes = {
-  recipe: PropTypes.object
+  recipe: PropTypes.object,
 };
 
 const mapDispatchToProps = {
-  navigateToRecipePage
+  navigateToRecipePage,
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RecipeCard);
+export default connect(null, mapDispatchToProps)(RecipeCard);

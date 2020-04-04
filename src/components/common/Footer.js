@@ -6,7 +6,7 @@ function Footer() {
     <div
       style={{
         height: "10vh",
-        backgroundColor: Colors.footer,
+        backgroundColor: Colors.bordo,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
