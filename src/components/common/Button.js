@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Colors from "./Colors";
 
 const ButtonBox = styled.button`
   -webkit-transition-duration: 0.3s; /* Safari */
@@ -20,13 +21,13 @@ const ButtonBox = styled.button`
     height: 30px;
 `}
   &:hover {
-    background-color: palevioletred;
-    color: white;
+    background-color: ${Colors.bordo};
+    color: ${Colors.lightGrey};
   }
 
   &:active {
-    background-color: red;
-    color: white;
+    background-color: ${Colors.white};
+    color: ${Colors.darkBordo};
   }
 `;
 
@@ -56,7 +57,7 @@ Button.propTypes = {
   style: PropTypes.object,
   size: PropTypes.string,
   className: PropTypes.string,
-  navigateTo: PropTypes.string
+  navigateTo: PropTypes.string,
 };
 
 export default Button;
