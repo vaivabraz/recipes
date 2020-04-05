@@ -1,4 +1,4 @@
-const userState = state => state.user;
+const userState = (state) => state.user;
 
 export function getCategories(state) {
   return userState(state).get("categories");
