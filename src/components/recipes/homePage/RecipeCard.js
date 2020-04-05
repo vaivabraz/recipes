@@ -16,7 +16,7 @@ const Card = styled.button`
   align-items: center;
   &:hover {
     background-color: ${Colors.white};
-    color: ${Colors.error};
+    color: ${Colors.softRed};
   }
 `;
 

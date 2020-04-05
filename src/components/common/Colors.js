@@ -1,6 +1,6 @@
 const Colors = {
   borderColor: "#dbdbdb", //grey
-  error: "#AF5B5B", //red
+  softRed: "#AF5B5B", //red
   white: "#ffffff", //white
   darkBordo: "#281708", //brown
   bordo: "#4d1515", //bordo
