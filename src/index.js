@@ -6,8 +6,6 @@ import "./index.css";
 import "./classes.css";
 import configureStore, { history } from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
-import { loadUser } from "./redux/actions/userActions";
-import { getRecipes } from "./redux/actions/recipesActions";
 require("dotenv").config();
 
 const store = configureStore();
@@ -20,5 +18,4 @@ render(
   document.getElementById("app")
 );
 
-store.dispatch(loadUser());
-store.dispatch(getRecipes());
+// store.dispatch(loadUser());

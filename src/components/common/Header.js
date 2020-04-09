@@ -1,48 +1,54 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getIsLoggedIn } from "../../redux/selectors/userSelectors";
+import { setLogInStatus } from "../../redux/actions/userActions";
+import {
+  navigateToHomePage,
+  navigateToProfile,
+} from "../../redux/actions/navigationActions";
+import { TextButton } from "./";
+import Colors from "./Colors";
+import styled from "styled-components";
+
+const HeaderBox = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  border-top: solid ${Colors.bordo};
+  padding: 2vh 18vh;
+`;
+
+const NavLinkBox = styled((props) => <TextButton {...props} />)`
+  margin: 0vh 0.5vh;
+`;
 
 const Header = () => {
-  const activeStyle = { color: "#842727" };
-  // const activeStyle = { color: "#F15B2A" };
+  const isLoggedIn = useSelector(getIsLoggedIn);
+  const dispatch = useDispatch();
 
-  return (
-    <nav style={styles.container}>
-      <NavLink
-        className="border"
-        to="/"
-        activeStyle={activeStyle}
-        exact
-        style={styles.navLink}
-      >
-        <h5>RECEPTAI</h5>
-      </NavLink>
-
-      <NavLink to="/profile" activeStyle={activeStyle} style={styles.navLink}>
-        <h5>Vaiva</h5>
-      </NavLink>
-      <NavLink
-        to="/createRecipe"
-        activeStyle={activeStyle}
-        style={styles.navLink}
-      >
-        <h5>Atsijungti</h5>
-      </NavLink>
-    </nav>
+  return isLoggedIn ? (
+    <HeaderBox>
+      <NavLinkBox
+        text={"Receptai"}
+        action={() => {
+          dispatch(navigateToHomePage());
+        }}
+      />
+      <NavLinkBox
+        text={"Vaiva"}
+        action={() => {
+          dispatch(navigateToProfile());
+        }}
+      />
+      <NavLinkBox
+        text={"Atsijungti"}
+        action={() => {
+          dispatch(setLogInStatus(false));
+        }}
+      />
+    </HeaderBox>
+  ) : (
+    <div />
   );
 };
 
 export default Header;
-
-const styles = {
-  container: {
-    padding: "18px 30px",
-    display: "flex",
-    justifyContent: "flex-end",
-    borderTop: "10px #4d1515 solid"
-  },
-  navLink: {
-    padding: "3px 10px",
-    fontSize: "16px",
-    color: "#281708"
-  }
-};
