@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getIsLoggedIn } from "../../redux/selectors/userSelectors";
-import { setLogInStatus } from "../../redux/actions/userActions";
+import { logOff } from "../../redux/actions/userActions";
 import {
   navigateToHomePage,
   navigateToProfile,
@@ -42,7 +42,7 @@ const Header = () => {
       <NavLinkBox
         text={"Atsijungti"}
         action={() => {
-          dispatch(setLogInStatus(false));
+          dispatch(logOff());
         }}
       />
     </HeaderBox>

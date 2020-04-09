@@ -1,8 +1,21 @@
 import * as types from "./actionTypes";
 
-export function logIn() {
+export function logIn(userData) {
   return {
     type: types.LOG_IN,
+    userData,
+  };
+}
+
+export function logOff() {
+  return {
+    type: types.LOG_OFF,
+  };
+}
+
+export function logInSavedUser() {
+  return {
+    type: types.LOG_IN_SAVED_USER,
   };
 }
 

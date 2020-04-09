@@ -39,7 +39,7 @@ export function LogInPage() {
       <Button
         text={"Prisijungti"}
         action={() => {
-          dispatch(logIn());
+          dispatch(logIn(value));
         }}
       />
       <TextButton text={"Registruotis"} action={() => {}} />
