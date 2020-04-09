@@ -40,7 +40,7 @@ const Title = styled.h3`
 function RecipeCard(props) {
   const { recipe } = props;
 
-  const image = require("../../../images/" + "vistiena.jpg");
+  const image = require("../../../images/" + "salad.jpg");
   // const image = require("../../../images/" + imageName);
   const title = recipe.title;
   const handleOnClick = () => {
