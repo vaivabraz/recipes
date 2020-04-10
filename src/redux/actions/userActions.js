@@ -45,3 +45,10 @@ export function setStartPageInitialized(initialized) {
     initialized,
   };
 }
+
+export function setLoading(loading) {
+  return {
+    type: types.SET_LOADING,
+    loading,
+  };
+}

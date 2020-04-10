@@ -15,3 +15,7 @@ export function getIsLoggedIn(state) {
 export function getStartPageInitialized(state) {
   return userState(state).get("initialized");
 }
+
+export function getIsLoading(state) {
+  return userState(state).get("loading");
+}

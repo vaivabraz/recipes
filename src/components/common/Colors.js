@@ -9,6 +9,7 @@ const Colors = {
   pinkGrey: "#b3acac",
   sandy: "#dbd1c1",
   iconsColor: "rgb(141, 141, 126)", //(//dark grey with green)
+  overlay: "rgba(222, 219, 216, 0.8)", //grey
 };
 
 export default Colors;

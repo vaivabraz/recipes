@@ -4,3 +4,4 @@ export { default as Button } from "./Button";
 export { default as TextButton } from "./TextButton";
 export { default as Section } from "./Section";
 export { default as TextInput } from "./TextInput";
+export { default as Overlay } from "./Overlay";

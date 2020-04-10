@@ -16,11 +16,13 @@ export default function* saga() {
 }
 
 export function* logIn(data) {
+  yield put(userActions.setLoading(true));
   yield put(userActions.setLogInStatus(true));
   localStorage.setItem("loggedInUser", data.userData.username);
   yield call(loadUser);
-  yield fork(getRecipes);
   yield fork(navigateToHomePage);
+  yield fork(getRecipes);
+  yield put(userActions.setLoading(false));
 }
 
 export function* logOff() {

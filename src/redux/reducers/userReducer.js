@@ -6,6 +6,7 @@ const initalState = Record({
   categories: [],
   isLoggedIn: false,
   initialized: false,
+  loading: false,
 });
 
 function setCategories(state, info) {
@@ -20,6 +21,10 @@ function setStartPageInitialized(state, initialized) {
   return state.set("initialized", initialized);
 }
 
+function setLoading(state, loading) {
+  return state.set("loading", loading);
+}
+
 export default function userReducer(state = new initalState(), action) {
   switch (action.type) {
     case types.SET_USER_INFORMATION:
@@ -28,6 +33,8 @@ export default function userReducer(state = new initalState(), action) {
       return setLogInStatus(state, action.logInStatus);
     case types.SET_START_PAGE_INITIALIZED:
       return setStartPageInitialized(state, action.initialized);
+    case types.SET_LOADING:
+      return setLoading(state, action.loading);
     default:
       return state;
   }
