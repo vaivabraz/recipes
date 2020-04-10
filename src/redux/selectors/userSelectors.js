@@ -11,3 +11,7 @@ export function getUsername(state) {
 export function getIsLoggedIn(state) {
   return userState(state).get("isLoggedIn");
 }
+
+export function getStartPageInitialized(state) {
+  return userState(state).get("initialized");
+}

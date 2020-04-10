@@ -38,3 +38,10 @@ export function setUserInformation(info) {
     info,
   };
 }
+
+export function setStartPageInitialized(initialized) {
+  return {
+    type: types.SET_START_PAGE_INITIALIZED,
+    initialized,
+  };
+}

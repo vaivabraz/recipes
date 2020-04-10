@@ -43,4 +43,5 @@ export function* logInSavedUser() {
   if (loggedUser) {
     yield put(userActions.logIn({ username: loggedUser }));
   }
+  yield put(userActions.setStartPageInitialized(true));
 }

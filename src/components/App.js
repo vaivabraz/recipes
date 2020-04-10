@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import { useSelector } from "react-redux";
+import { getStartPageInitialized } from "../redux/selectors/userSelectors";
 import { Header, Footer } from "./common";
 import PageNotFound from "./PageNotFound";
 import ProfilePage from "./profile/ProfilePage";
@@ -8,7 +10,8 @@ import { LogInPage } from "./login";
 import { PrivateRoute } from "./PrivateRoute";
 
 function App() {
-  return (
+  const initalized = useSelector(getStartPageInitialized);
+  return initalized ? (
     <div>
       <Header />
       <Switch>
@@ -22,6 +25,8 @@ function App() {
       </Switch>
       <Footer />
     </div>
+  ) : (
+    <div />
   );
 }
 
