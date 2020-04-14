@@ -16,7 +16,7 @@ function CreateRecipe(props) {
       : [
           { product: "", quantity: "", id: 0 },
           { product: "", quantity: "", id: 1 },
-          { product: "", quantity: "", id: 2 }
+          { product: "", quantity: "", id: 2 },
         ];
   const [recipe, setRecipe] = useState({
     _id: currentRecipe._id || null,
@@ -28,11 +28,11 @@ function CreateRecipe(props) {
     time: currentRecipe.time || "",
     portions: currentRecipe.portions || "",
     categories: currentRecipe.categories
-      ? currentRecipe.categories.map(c => {
+      ? currentRecipe.categories.map((c) => {
           return { value: c, label: c };
         })
       : [],
-    ingredients: products
+    ingredients: products,
     //   date: "",
     //   slug: props.match.params.slug,
   });
@@ -40,41 +40,41 @@ function CreateRecipe(props) {
   const handleChange = ({ target }) => {
     const updateRecipe = {
       ...recipe,
-      [target.name]: target.value
+      [target.name]: target.value,
     };
     setRecipe(updateRecipe);
   };
 
   const handleIngredientChange = ({ target }, id) => {
-    const oldLine = recipe.ingredients.find(i => i.id === id);
+    const oldLine = recipe.ingredients.find((i) => i.id === id);
     const newLine = Object.assign(oldLine, {
-      [target.name]: target.value
+      [target.name]: target.value,
     });
-    const updateIngredients = recipe.ingredients.map(i =>
+    const updateIngredients = recipe.ingredients.map((i) =>
       i.id === id ? newLine : i
     );
     setRecipe({
       ...recipe,
-      ingredients: updateIngredients
+      ingredients: updateIngredients,
     });
   };
 
   const handleRemoveIngredient = (event, productId) => {
     event.preventDefault();
-    let newArr = recipe.ingredients.filter(i => i.id !== productId);
+    let newArr = recipe.ingredients.filter((i) => i.id !== productId);
     setRecipe({
       ...recipe,
-      ingredients: newArr
+      ingredients: newArr,
     });
   };
 
-  const handleAddIngredient = event => {
+  const handleAddIngredient = (event) => {
     event.preventDefault();
     let newArr = recipe.ingredients;
 
     const maxId =
       newArr.length > 0
-        ? newArr.reduce(function(prev, current) {
+        ? newArr.reduce(function (prev, current) {
             return prev.id > current.id ? prev.id : current.id;
           })
         : 0;
@@ -82,30 +82,30 @@ function CreateRecipe(props) {
     newArr.push({
       product: "",
       quantity: "",
-      id: maxId + 1
+      id: maxId + 1,
     });
     setRecipe({
       ...recipe,
-      ingredients: newArr
+      ingredients: newArr,
     });
   };
 
-  const handleCategoriesChange = props => {
+  const handleCategoriesChange = (props) => {
     setRecipe({
       ...recipe,
-      categories: props
+      categories: props,
     });
   };
 
   const handleSubmit = () => {
     let filteredIngredients = recipe.ingredients.filter(
-      i => i.product || i.quantity
+      (i) => i.product || i.quantity
     );
-    const filteredCategories = recipe.categories.map(i => i.value);
+    const filteredCategories = recipe.categories.map((i) => i.value);
     const finalRecipe = {
       ...recipe,
       ingredients: filteredIngredients,
-      categories: filteredCategories
+      categories: filteredCategories,
     };
     dispatch(postRecipe(finalRecipe));
   };
