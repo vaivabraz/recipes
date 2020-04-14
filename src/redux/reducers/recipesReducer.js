@@ -5,7 +5,7 @@ const initialState = Record({
   recipes: [],
   // recipes: List(),
   currentRecipe: null,
-  error: null
+  error: null,
 });
 
 const Recipe = Record({
@@ -13,11 +13,11 @@ const Recipe = Record({
   title: "",
   summary: "",
   image: "",
-  slug: ""
+  slug: "",
 });
 
 function setRecipes(state, recipes) {
-  const recipesList = List(recipes.map(r => new Recipe(r)));
+  const recipesList = List(recipes.map((r) => new Recipe(r)));
   return state.set("recipes", recipes);
 }
 
