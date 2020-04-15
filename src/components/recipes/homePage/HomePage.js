@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../common";
 import {
   getRecipes,
-  getError
+  getError,
 } from "../../../redux/selectors/recipesSelectors";
 import { getCategories } from "../../../redux/selectors/userSelectors";
 import { navigateToRecipeForm } from "../../../redux/actions/navigationActions";
@@ -54,5 +54,5 @@ const Header = styled.div`
   direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 5px 20px 30px;
+  padding: 0px 5px 0px 30px;
 `;

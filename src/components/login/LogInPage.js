@@ -11,7 +11,7 @@ const Page = styled.div`
 `;
 
 const InputsBox = styled.div`
-  padding-top: 8vh;
+  padding-top: 5vh;
   padding-bottom: 5vh;
 `;
 
