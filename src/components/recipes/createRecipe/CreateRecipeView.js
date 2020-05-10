@@ -68,6 +68,7 @@ function CreateRecipeView(props) {
             name="title"
             value={props.recipe.title}
             onChange={props.handleChange}
+            error={props.validationErrors.emptyTitleError}
           />
           <p className="textInputLabel">ingredientai</p>
           {ingredientsList}
@@ -86,6 +87,7 @@ function CreateRecipeView(props) {
             multiline
             value={props.recipe.preparation}
             onChange={props.handleChange}
+            error={props.validationErrors.emptyDescriptionError}
           />
           <TextInput
             label="pastabos"

@@ -37,6 +37,11 @@ function CreateRecipe(props) {
     //   slug: props.match.params.slug,
   });
 
+  const [validationErrors, setValidationErrors] = useState({
+    emptyTitleError: false,
+    emptyDescriptionError: false,
+  });
+
   const handleChange = ({ target }) => {
     const updateRecipe = {
       ...recipe,
@@ -98,6 +103,14 @@ function CreateRecipe(props) {
   };
 
   const handleSubmit = () => {
+    if (!recipe.title || !recipe.preparation) {
+      setValidationErrors({
+        emptyDescriptionError: !recipe.preparation,
+        emptyTitleError: !recipe.title,
+      });
+      return;
+    }
+
     let filteredIngredients = recipe.ingredients.filter(
       (i) => i.product || i.quantity
     );
@@ -119,6 +132,7 @@ function CreateRecipe(props) {
       handleRemoveIngredient={handleRemoveIngredient}
       handleCategoriesChange={handleCategoriesChange}
       handleSubmit={handleSubmit}
+      validationErrors={validationErrors}
     />
   );
 }
