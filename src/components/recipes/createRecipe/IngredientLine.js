@@ -27,11 +27,11 @@ const QuantityInput = styled.input`
 function IngredientLine(props) {
   const entry = props.entry;
 
-  const onInputChange = e => {
+  const onInputChange = (e) => {
     props.onChange(e, entry.id);
   };
 
-  const onRemoveProduct = e => {
+  const onRemoveProduct = (e) => {
     props.onRemove(e, entry.id);
   };
 
@@ -61,7 +61,7 @@ function IngredientLine(props) {
 IngredientLine.propTypes = {
   onChange: PropTypes.func,
   onRemove: PropTypes.func,
-  entry: PropTypes.object
+  entry: PropTypes.object,
 };
 
 export default IngredientLine;
