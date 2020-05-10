@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Colors from "../common/Colors";
@@ -42,30 +42,48 @@ function TextInput(props) {
   const { label, multiline, inline, error, ...inputProps } = props;
   const textInputInlineContainerStyle = { alignItems: "center" };
   const textInputContainerStyle = { flexDirection: "column" };
+  const inputRef = useRef();
+  const [activeError, setActiveError] = useState(false);
+
+  useEffect(() => {
+    if (activeError) {
+      setActiveError(false);
+    }
+  }, [inputRef.current?.value]);
+
+  useEffect(() => {
+    if (error) {
+      setActiveError(true);
+      inputRef.current.focus();
+    }
+  }, [error]);
 
   return (
     <TextInputContainer
       style={inline ? textInputInlineContainerStyle : textInputContainerStyle}
     >
-      <Label error={error}>{label}</Label>
-      {error && <Error>Šis laukelis turi būti užpildytas!</Error>}
+      <Label error={activeError}>{label}</Label>
+      {activeError && <Error>Šis laukelis turi būti užpildytas!</Error>}
       {multiline ? (
         <TextArea
           className="inputTextStyling border"
           rows="10"
+          ref={inputRef}
           {...inputProps}
         />
       ) : inline ? (
         <TextLineSmall
-          {...inputProps}
           autoComplete="off"
           className="inputTextStyling border"
+          ref={inputRef}
+          {...inputProps}
         />
       ) : (
         <TextLine
-          {...inputProps}
           autoComplete="off"
           className="inputTextStyling border"
+          ref={inputRef}
+          {...inputProps}
         />
       )}
     </TextInputContainer>
