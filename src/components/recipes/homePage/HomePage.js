@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../common";
 import {
-  getRecipes,
+  getUserRecipes,
   getError,
 } from "../../../redux/selectors/recipesSelectors";
 import { getCategories } from "../../../redux/selectors/userSelectors";
@@ -11,7 +11,7 @@ import { RecipesList, CategoriesList } from ".";
 import styled from "styled-components";
 
 function HomePage(props) {
-  const recipes = useSelector(getRecipes);
+  const recipes = useSelector(getUserRecipes);
   const categories = useSelector(getCategories);
   const error = useSelector(getError);
 
