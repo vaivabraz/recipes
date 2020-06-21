@@ -2,7 +2,7 @@ import * as types from "../actions/actionTypes";
 import { Record } from "immutable";
 
 const initalState = Record({
-  username: "VaivaBraz",
+  username: "TestUser",
   categories: [],
   isLoggedIn: false,
   initialized: false,

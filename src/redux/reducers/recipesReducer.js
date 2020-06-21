@@ -3,22 +3,24 @@ import { Record, List } from "immutable";
 
 const initialState = Record({
   recipes: [],
-  // recipes: List(),
   currentRecipe: null,
   error: null,
+  shortRecipesList: List(),
 });
 
 const Recipe = Record({
-  _id: 0,
   title: "",
-  summary: "",
   image: "",
   slug: "",
 });
 
 function setRecipes(state, recipes) {
-  const recipesList = List(recipes.map((r) => new Recipe(r)));
   return state.set("recipes", recipes);
+}
+
+function setUserRecipes(state, recipes) {
+  const recipesList = List(recipes.map((r) => new Recipe(r)));
+  return state.set("shortRecipesList", recipesList);
 }
 
 function setError(state, error) {
@@ -29,6 +31,8 @@ export default function recipesReducer(state = new initialState(), action) {
   switch (action.type) {
     case types.SET_RECIPES:
       return setRecipes(state, action.recipes);
+    case types.SET_USER_RECIPES:
+      return setUserRecipes(state, action.recipes);
     case types.SET_ERROR:
       return setError(state, action.error);
     default:
