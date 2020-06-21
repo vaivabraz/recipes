@@ -11,7 +11,7 @@ const List = styled.div`
 export default function RecipesList(props) {
   return (
     <List>
-      {props.recipes.map(recipe => (
+      {props.recipes?.map((recipe) => (
         <RecipeCard key={recipe._id} recipe={recipe} />
       ))}
     </List>
@@ -19,5 +19,5 @@ export default function RecipesList(props) {
 }
 
 RecipesList.propTypes = {
-  recipes: PropTypes.array
+  recipes: PropTypes.array,
 };

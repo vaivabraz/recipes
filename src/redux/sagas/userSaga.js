@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 import { geUserApi } from "../../api/usersApi";
 import { getUsername } from "../selectors/userSelectors";
 import * as userActions from "../actions/userActions";
+import * as recipesActions from "../actions/recipesActions";
 import { getRecipes } from "./recipesSaga";
 import { navigateToHomePage } from "./navigationSaga";
 
@@ -35,6 +36,7 @@ export function* loadUser() {
     const user = yield select(getUsername);
     const response = yield call(geUserApi, user);
     yield put(userActions.setUserInformation(response));
+    yield put(recipesActions.setUserRecipes(response.recipesList));
   } catch (e) {
     console.log("Error: ", e);
   }
