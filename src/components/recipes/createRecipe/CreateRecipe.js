@@ -56,7 +56,7 @@ function CreateRecipe(props) {
       [target.name]: target.value,
     });
     const updateIngredients = recipe.ingredients.map((i) =>
-      i.id === id ? newLine : i
+      i.id === id ? newLine : i,
     );
     setRecipe({
       ...recipe,
@@ -112,7 +112,7 @@ function CreateRecipe(props) {
     }
 
     let filteredIngredients = recipe.ingredients.filter(
-      (i) => i.product || i.quantity
+      (i) => i.product || i.quantity,
     );
     const filteredCategories = recipe.categories.map((i) => i.value);
     const finalRecipe = {
