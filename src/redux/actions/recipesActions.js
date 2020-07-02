@@ -27,10 +27,10 @@ export function postRecipe(recipe) {
   };
 }
 
-export function deleteRecipe(recipeId) {
+export function deleteRecipe(slug) {
   return {
     type: types.DELETE_RECIPE,
-    recipeId,
+    slug,
   };
 }
 

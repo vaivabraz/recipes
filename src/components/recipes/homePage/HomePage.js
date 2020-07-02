@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "../../common";
 import {
@@ -18,6 +18,10 @@ function HomePage(props) {
   const dispatch = useDispatch();
   const handleRecipePress = useCallback(() => {
     dispatch(navigateToRecipeForm());
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   return (

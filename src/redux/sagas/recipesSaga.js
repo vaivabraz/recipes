@@ -1,13 +1,14 @@
 import { put, call, takeLeading, all, fork } from "redux-saga/effects";
 
 import * as actionTypes from "../actions/actionTypes";
+import { putRecipeApi } from "../../api/recipesApi";
 import {
   getRecipesApi,
   postRecipeApi,
-  putRecipeApi,
   deleteRecipeApi,
-} from "../../api/recipesApi";
+} from "../../api/userRecipesApi";
 import * as recipesActions from "../actions/recipesActions";
+import { callApi } from "../sagas/utilsSaga";
 import { navigateToHomePage } from "./navigationSaga";
 
 export default function* saga() {
@@ -20,8 +21,8 @@ export default function* saga() {
 
 export function* getRecipes() {
   try {
-    const response = yield call(getRecipesApi);
-    yield put(recipesActions.setRecipes(response));
+    const response = yield call(callApi, getRecipesApi);
+    yield put(recipesActions.setUserRecipes(response));
   } catch (e) {
     console.log("Error: ", e);
     yield put(recipesActions.setError("Nepavyko parsiusti receptu"));
@@ -34,8 +35,8 @@ export function* postRecipe(data) {
       const response = yield call(putRecipeApi, data.recipe);
       console.log("Response putted: ", response);
     } else {
-      data.recipe.author = "VaivaBraz"; //TODO
-      const response = yield call(postRecipeApi, data.recipe);
+      const body = { recipe: data.recipe };
+      const response = yield call(callApi, postRecipeApi, body);
       console.log("Response posted: ", response);
     }
 
@@ -48,7 +49,7 @@ export function* postRecipe(data) {
 
 export function* deleteRecipe(data) {
   try {
-    yield call(deleteRecipeApi, data.recipeId);
+    yield call(callApi, deleteRecipeApi, {}, data.slug);
     console.log("Recipe deleted");
 
     yield fork(getRecipes);
