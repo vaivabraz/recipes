@@ -12,12 +12,12 @@ export default function RecipesList(props) {
   return (
     <List>
       {props.recipes?.map((recipe) => (
-        <RecipeCard key={recipe._id} recipe={recipe} />
+        <RecipeCard key={recipe.slug} recipe={recipe} />
       ))}
     </List>
   );
 }
 
 RecipesList.propTypes = {
-  recipes: PropTypes.array,
+  recipes: PropTypes.object,
 };

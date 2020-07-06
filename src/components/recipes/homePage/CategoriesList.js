@@ -7,9 +7,9 @@ export default function CategoriesList(props) {
     <CategoriesContainer>
       <Header>Kategorijos:</Header>
       <ul>
-        {props.categories.map(category => {
+        {props.categories.map((category) => {
           return (
-            <li>
+            <li key={category}>
               <h5>{category}</h5>
             </li>
           );
@@ -20,7 +20,7 @@ export default function CategoriesList(props) {
 }
 
 CategoriesList.propTypes = {
-  categories: PropTypes.array
+  categories: PropTypes.array,
 };
 
 const CategoriesContainer = styled.div`

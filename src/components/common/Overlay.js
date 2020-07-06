@@ -22,7 +22,7 @@ const PageOverlay = styled.div`
   flex-direction: column;
 `;
 
-const LoadingText = styled.text`
+const LoadingText = styled.p`
   margin-top: 2vh;
 `;
 
