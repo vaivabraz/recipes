@@ -33,8 +33,7 @@ function CreateRecipe(props) {
         })
       : [],
     ingredients: products,
-    //   date: "",
-    //   slug: props.match.params.slug,
+    slug: currentRecipe.slug || "",
   });
 
   const [validationErrors, setValidationErrors] = useState({

@@ -2,6 +2,18 @@ import { handleResponse, handleError } from "./apiUtils";
 const baseUrl = process.env.REACT_APP_API_URL;
 const recipesUrl = baseUrl + "api/userRecipes";
 
+export function getShortRecipesApi(body) {
+  return fetch(recipesUrl + "/list/short", {
+    method: "post",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export function getRecipesApi(body) {
   return fetch(recipesUrl + "/list", {
     method: "post",
@@ -29,6 +41,18 @@ export function getRecipeBySlugApi(body, slug) {
 export function postRecipeApi(body) {
   return fetch(recipesUrl, {
     method: "post",
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(handleResponse)
+    .catch(handleError);
+}
+
+export function putRecipeApi(body, slug) {
+  return fetch(recipesUrl + "/" + slug, {
+    method: "put",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
